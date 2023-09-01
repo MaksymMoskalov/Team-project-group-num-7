@@ -1,4 +1,3 @@
-import axios from 'axios';
 const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
 function getInfoByBooks(bookId) {
   return axios.get(BASE_URL, {
@@ -50,7 +49,7 @@ function onEscKeyPress(event) {
 
 getInfoByBooks()
   .then(responce => {
-    const data = responce.data.map(book => book.books[0]);
+    const data = responce.data.map(book => book.books);
     console.log(data);
     createMarkup(data);
   })
@@ -62,24 +61,13 @@ function createMarkup(arr) {
   const cardBook = arr
     .map(el => {
       return `
-<img class = "image " src="${el.book_image}" alt=""  width="192" height="281"" />
+<img class = "image " src="${el.book_image}" alt=""   />
 <div class = "info-book">
 <h2 class = "title">${el.title}</h2>
 <p class="author">${el.author}</p>
 <p class="description">ghb</p>
 <ul>
-<li>
-<a
-                      class="socials-link link"
-                      href="https://facebook.com"
-                      target="_blank"
-                      rel="nooperer noreferrer"
-                      aria-label="Facebook icon"
-                    >
-                      <svg class="social-icon" width="16" height="16">
-                        <use href="./images/icon.svg#icon-facebook"></use>
-                      </svg>
-                    </a></li>
+<li></li>
 <li></li>
 <li></li>
 </ul>
