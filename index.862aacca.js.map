@@ -1,1 +1,0 @@
-{"mappings":"AAEmBA,SAASC,cAAc","sources":["src/js/book-list.js"],"sourcesContent":["// import {} from '';\n\nconst globalList = document.querySelector('.ul-global');\n"],"names":["document","querySelector"],"version":3,"file":"index.862aacca.js.map"}
