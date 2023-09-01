@@ -1,0 +1,31 @@
+.main-headline {
+  color: var(--black);
+}
+
+.headline-books {
+  color: var(--violet);
+}
+
+.ul-global {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.see-more {
+  display: inline-flex;
+  padding: 14px 28px;
+  align-items: center;
+  border-radius: 40px;
+  border: 2px solid var(--violet);
+  justify-content: flex-end;
+  background-color: var(--white);
+
+  color: var(--black);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.14px;
+  text-transform: uppercase;
+}
