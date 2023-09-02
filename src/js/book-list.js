@@ -51,6 +51,7 @@ function workWithData({ data }) {
 
 function createBookMarkup({ list_name, book_image, title, author }) {
   return `
+  <a class="book-link link" href="${book_image}">
     <li class="book">
       <p class="categories">${list_name}</p>
       <div class='box'>
@@ -58,7 +59,8 @@ function createBookMarkup({ list_name, book_image, title, author }) {
       </div>
       <h3 class="title">${title}</h3>
       <p class="author">${author}</p>
-    </li>`;
+    </li>
+    </a>`;
 }
 
 // function workWithData({ data }) {
