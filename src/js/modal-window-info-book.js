@@ -12,17 +12,36 @@ function getInfoByBooks(bookId) {
   });
 }
 
-getInfoByBooks()
-  .then(responce => {
-    const data = responce.data.map(book => book.books[0]);
-    console.log(data);
-    createMarkup(data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+const linkShop = {
+  amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
+  appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
+  bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
+};
 
-function createMarkup(arr) {
+function getLink(name) {
+  if (name in linkShop) {
+    const image = linkShop[name];
+    return image;
+  } else return '';
+}
+// слушатель события должен быть
+function addcontent(e) {
+  getInfoByBooks()
+    .then(responce => {
+      const data = responce.data.map(book => book.books[0]);
+      const link = responce.data.map(book =>
+        book.books[0].buy_links.map(({ url }) => url)
+      );
+      console.log(data);
+      console.log(link);
+      createContent(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+function createContent(arr) {
   const cardBook = arr
     .map(el => {
       return `
@@ -101,7 +120,7 @@ function onEscKeyPress(event) {
 }
 
 function cheangeTextOfBtn() {
-  refs.btnList.hidden = false;
+  // refs.btnList.hidden = false;
   // refs.btnList.hidden = true;
   // refs.btnListRemove.hidden = false;
   // if ((refs.btnList.textContent = 'Add to shopping list')) {
