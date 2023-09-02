@@ -2,3 +2,4 @@
 import './js/modal.js';
 import './js/book-list.js';
 import './js/mobile-menu.js';
+import './js/support.js';
