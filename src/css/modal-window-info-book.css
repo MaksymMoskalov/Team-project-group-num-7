@@ -48,6 +48,7 @@ body.show-modal .backdrop {
   border-radius: 8px;
 }
 .info-book-card {
+  height: 281px;
   padding: 40px;
   list-style: none;
   display: flex;
@@ -67,7 +68,7 @@ body.show-modal .backdrop {
 
   font-size: 24px;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 1.17;
   letter-spacing: -0.96px;
 
   padding-bottom: 8px;
@@ -81,7 +82,7 @@ body.show-modal .backdrop {
 
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.29;
   letter-spacing: -0.56px;
 }
 .description {
@@ -91,12 +92,17 @@ body.show-modal .backdrop {
   padding-bottom: 20px;
   line-height: 1.3;
 }
-
+.list-links {
+  display: flex;
+  gap: 20px;
+}
 .list-btn {
   font-family: DM Sans;
   font-size: 18px;
   font-style: normal;
+  line-height: 1.3;
   text-transform: uppercase;
+  letter-spacing: -0.18px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -106,7 +112,7 @@ body.show-modal .backdrop {
   align-items: center;
   gap: 10px;
   border-radius: 40px;
-  border: 2px solid #4f2ee8;
+  border: 2px solid var(--violet);
   background-color: transparent;
   cursor: pointer;
 }
@@ -124,4 +130,64 @@ body.show-modal .backdrop {
   font-weight: 400;
   line-height: 14px;
   letter-spacing: -0.48px;
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 335px;
+    height: 762px;
+  }
+  .modal-btn-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 24px;
+    width: 24px;
+  }
+
+  .image {
+    width: 287px;
+    height: 408px;
+    border-radius: 8px;
+    padding-bottom: 14px;
+  }
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.64px;
+    padding-bottom: 4px;
+  }
+  .info-book-card {
+    height: 636px;
+    padding: 40px 24px 0 24px;
+    list-style: none;
+    display: block;
+  }
+  .author {
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: -0.48px;
+    padding-bottom: 18px;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 1.23;
+    letter-spacing: -0.56px;
+    padding-bottom: 16px;
+  }
+  .list-btn {
+    width: 211px;
+    height: 46px;
+    display: flex;
+    padding: 14px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.14px;
+  }
 }
