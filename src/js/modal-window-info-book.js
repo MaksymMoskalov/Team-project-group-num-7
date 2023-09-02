@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
 function getInfoByBooks(bookId) {
   return axios.get(BASE_URL, {
