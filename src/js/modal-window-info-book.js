@@ -14,7 +14,7 @@ function getInfoByBooks(bookId) {
 
 getInfoByBooks()
   .then(responce => {
-    const data = responce.data.map(book => book.books);
+    const data = responce.data.map(book => book.books[0]);
     console.log(data);
     createMarkup(data);
   })
@@ -65,6 +65,7 @@ const refs = {
   cardInfoBook: document.querySelector('.info-book-card'),
   congratulations: document.querySelector('.congratulations'),
   btnList: document.querySelector('.list-btn'),
+  btnListRemove: document.querySelector('.list-btn-remove'),
 };
 console.log(refs.cardInfoBook);
 console.log(refs.btnList);
@@ -78,11 +79,13 @@ refs.backdrop.addEventListener('click', clickOnBackdrop);
 function openModal() {
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('show-modal');
+  document.body.style.overflowY = 'hidden';
 }
 
 function closeModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   document.body.classList.remove('show-modal');
+  document.body.style.overflowY = '';
 }
 
 function clickOnBackdrop(event) {
@@ -98,18 +101,20 @@ function onEscKeyPress(event) {
 }
 
 function cheangeTextOfBtn() {
-  if ((refs.btnList.textContent = 'Add to shopping list')) {
-    removeBtnList = refs.btnList.textContent = 'remove from the shopping list';
-    // refs.modal.style.height = '501px';
-    // refs.congratulations.hidden = false;
-
-    // refs.btnList.addEventListener('click', event => {
-    //   console.log(event);
-    //   if (event.currentTarget) {
-    //     refs.btnList.textContent = 'add to shopping list';
-    //     refs.modal.style.height = '465px';
-    //     refs.congratulations.hidden = true;
-    //   }
-    // });
-  }
+  refs.btnList.hidden = false;
+  // refs.btnList.hidden = true;
+  // refs.btnListRemove.hidden = false;
+  // if ((refs.btnList.textContent = 'Add to shopping list')) {
+  // removeBtnList = refs.btnList.textContent = 'remove from the shopping list';
+  // refs.modal.style.height = '501px';
+  // refs.congratulations.hidden = false;
+  // refs.btnList.addEventListener('click', event => {
+  //   console.log(event);
+  //   if (event.currentTarget) {
+  //     refs.btnList.textContent = 'add to shopping list';
+  //     refs.modal.style.height = '465px';
+  //     refs.congratulations.hidden = true;
+  //   }
+  // });
+  // }
 }
