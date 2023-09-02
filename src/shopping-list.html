@@ -15,7 +15,69 @@
   <body>
     <include src="./partials/header.html"></include>
     <main>
-      <section></section>
+      <section class="shop">
+        <div class="container">
+          <h1 class="title-h1">Shopping <span>List</span></h1>
+          <ul class="book-list">
+            <li class="book-item">
+              <div class="book-data">
+                <div class="book-img"">
+                <img src="./images/shop-imgs/book1.png" alt="book1"></div>
+                <div class="book-info">
+                  <h2 class="book-name">I will find you</h2>
+                  <p class="book-category">Hardcover fiction</p>
+                  <p class="book-desc">
+                    David Burroughs was once a devoted father to his
+                    three-year-old son Matthew, living a dream life just a short
+                    drive away from the working-class suburb where he and his
+                    wife, Cheryl, first fell in love--until one fateful night
+                    when David woke suddenly to discover Matthew had been
+                    murdered while David was asleep just down the hall.
+                  </p>
+                  <div class="author-shoplinks">
+                    <p class="book-author">Harlan Coben</p>
+                    <ul class="shop-links">
+                      <li class="item-book">
+                        <a href="" target="_blank" class="">
+                          <img
+                            src="./images/link-png/amazon.png"
+                            alt="amazon"
+                          />
+                        </a>
+                      </li>
+                      <li class="item-book">
+                        <a href="" target="_blank" class="">
+                          <img
+                            src="./images/link-png/applebook.png"
+                            alt="applebook"
+                            width="16px"
+                            height="16px"
+                          />
+                        </a>
+                      </li>
+                      <li class="item-book">
+                        <a href="" target="_blank" class="">
+                          <img
+                            src="./images/link-png/bookshop.png"
+                            alt="bookshop"
+                            width="16px"
+                            height="16px"
+                          />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn-delete">
+                <svg class="icon-delete">
+                    <use href="./images/header-imgs/header-sprite.svg#icon-trash"></use>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
     <script type="module" src="./index.js"></script>
   </body>
