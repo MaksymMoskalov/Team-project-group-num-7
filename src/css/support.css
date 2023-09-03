@@ -33,13 +33,24 @@
 }
 
 .charity-box {
-  margin-left: 40px;
-  margin-top: 42px;
+ 
   width: 159px;
   max-height: 292px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
+
 }
+
+.charity-box-clicked {
+    transform: translate(0, -100%);
+}
+
+.charity-wrapper {
+    margin-left: 40px;
+        margin-top: 42px;
+    width: 159px;
+        max-height: 292px;
+        overflow: hidden;
+}
+
 
 .wrap-counter-img {
   display: flex;
@@ -83,3 +94,4 @@
   left: 50%;
   transform: translate(-36%, -36%);
 }
+
