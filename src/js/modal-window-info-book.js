@@ -12,17 +12,36 @@ function getInfoByBooks(bookId) {
   });
 }
 
-getInfoByBooks()
-  .then(responce => {
-    const data = responce.data.map(book => book.books);
-    console.log(data);
-    createMarkup(data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+const linkShop = {
+  amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
+  appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
+  bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
+};
 
-function createMarkup(arr) {
+function getLink(name) {
+  if (name in linkShop) {
+    const image = linkShop[name];
+    return image;
+  } else return '';
+}
+// слушатель события должен быть
+function addcontent(e) {
+  getInfoByBooks()
+    .then(responce => {
+      const data = responce.data.map(book => book.books[0]);
+      const link = responce.data.map(book =>
+        book.books[0].buy_links.map(({ url }) => url)
+      );
+      console.log(data);
+      console.log(link);
+      createContent(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+function createContent(arr) {
   const cardBook = arr
     .map(el => {
       return `
@@ -65,6 +84,7 @@ const refs = {
   cardInfoBook: document.querySelector('.info-book-card'),
   congratulations: document.querySelector('.congratulations'),
   btnList: document.querySelector('.list-btn'),
+  btnListRemove: document.querySelector('.list-btn-remove'),
 };
 console.log(refs.cardInfoBook);
 console.log(refs.btnList);
@@ -78,11 +98,13 @@ refs.backdrop.addEventListener('click', clickOnBackdrop);
 function openModal() {
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('show-modal');
+  document.body.style.overflowY = 'hidden';
 }
 
 function closeModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   document.body.classList.remove('show-modal');
+  document.body.style.overflowY = '';
 }
 
 function clickOnBackdrop(event) {
@@ -98,18 +120,20 @@ function onEscKeyPress(event) {
 }
 
 function cheangeTextOfBtn() {
-  if ((refs.btnList.textContent = 'Add to shopping list')) {
-    removeBtnList = refs.btnList.textContent = 'remove from the shopping list';
-    // refs.modal.style.height = '501px';
-    // refs.congratulations.hidden = false;
-
-    // refs.btnList.addEventListener('click', event => {
-    //   console.log(event);
-    //   if (event.currentTarget) {
-    //     refs.btnList.textContent = 'add to shopping list';
-    //     refs.modal.style.height = '465px';
-    //     refs.congratulations.hidden = true;
-    //   }
-    // });
-  }
+  // refs.btnList.hidden = false;
+  // refs.btnList.hidden = true;
+  // refs.btnListRemove.hidden = false;
+  // if ((refs.btnList.textContent = 'Add to shopping list')) {
+  // removeBtnList = refs.btnList.textContent = 'remove from the shopping list';
+  // refs.modal.style.height = '501px';
+  // refs.congratulations.hidden = false;
+  // refs.btnList.addEventListener('click', event => {
+  //   console.log(event);
+  //   if (event.currentTarget) {
+  //     refs.btnList.textContent = 'add to shopping list';
+  //     refs.modal.style.height = '465px';
+  //     refs.congratulations.hidden = true;
+  //   }
+  // });
+  // }
 }
