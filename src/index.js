@@ -7,4 +7,3 @@ import './js/modal-window-info-book.js';
 import './js/support.js';
 import './js/category-list.js';
 import './js/dark-theme.js';
-import './js/pagination.js';
