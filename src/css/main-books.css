@@ -24,6 +24,7 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -41,14 +42,21 @@
 }
 
 .book {
+  min-width: 335px;
   max-width: 335px;
-  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .book {
     max-width: 218px;
-    max-height: 316px;
+    min-width: 218px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .book {
+    max-width: 180px;
+    min-width: 180px;
   }
 }
 
@@ -66,6 +74,7 @@
 
 .box {
   width: 100%;
+  max-width: 335px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -73,20 +82,20 @@
 .img-book {
   margin: 0;
   width: 100%;
-  height: 100%;
+  min-height: 485px;
   max-height: 485px;
 }
 
 @media screen and (min-width: 768px) {
   .img-book {
-    max-width: 218px;
+    min-height: 316px;
     max-height: 316px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .img-book {
-    max-width: 180px;
+    min-height: 256px;
     max-height: 256px;
   }
 }
@@ -115,7 +124,16 @@
 
   margin-bottom: 4px;
   margin-top: 14px;
+  height: 18px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
+
+/* @media screen and (min-width: 768px) {
+  .title-main {
+    
+  }
+} */
 
 .author-main {
   color: #b4afaf;
@@ -124,6 +142,10 @@
   font-weight: 400;
   line-height: 14px; /* 116.667% */
   letter-spacing: -0.48px;
+
+  height: 14px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .see-more {
@@ -143,4 +165,16 @@
   line-height: 18px; /* 128.571% */
   letter-spacing: -0.14px;
   text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  .see-more {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .see-more {
+    margin-top: 32px;
+  }
 }
