@@ -35,6 +35,8 @@ body.show-modal .backdrop {
   background: #fff;
 }
 .modal-btn-close {
+  background-color: transparent;
+  border: none;
   position: absolute;
   top: 24px;
   right: 24px;
@@ -116,6 +118,26 @@ body.show-modal .backdrop {
   background-color: transparent;
   cursor: pointer;
 }
+.list-btn-remove {
+  font-family: DM Sans;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: -0.18px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 499px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: 2px solid var(--violet);
+  background-color: transparent;
+  cursor: pointer;
+}
 
 .congratulations {
   padding-top: 8px;
@@ -178,6 +200,20 @@ body.show-modal .backdrop {
   }
   .list-btn {
     width: 211px;
+    height: 46px;
+    display: flex;
+    padding: 14px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.14px;
+  }
+  .list-btn-remove {
+    width: 279px;
     height: 46px;
     display: flex;
     padding: 14px;
