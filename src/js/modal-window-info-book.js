@@ -26,60 +26,51 @@ refs.backdrop.addEventListener('click', clickOnBackdrop);
 // refs.btnListRemove.addEventListener('click', addBtnRemove);
 refs.bookElement.addEventListener('click', addcontent);
 
-const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
-function getInfoByBooks(bookId) {
-  return axios.get(BASE_URL, {
-    params: {
-      id: `${bookId}`,
-    },
-  });
+const BASE_URL = 'https://books-backend.p.goit.global/books/';
+async function getInfoByBooks(bookId) {
+  const getData = await axios.get(
+    `https://books-backend.p.goit.global/books/${bookId}`
+  );
+  return getData.data;
 }
 
-// слушатель события должен быть
-function addcontent(e) {
+async function addcontent(e) {
+  const id = e.target.closest('.book');
   openModal();
-  console.log(e);
+  const data = await getInfoByBooks(id.dataset.id);
+  const markUp = createContent(data);
 
-  getInfoByBooks('642fd89ac8cf5ee957f12361')
-    .then(responce => {
-      const data = responce.data.map(book => book.books[0]);
-      const link = responce.data.map(book =>
-        book.books[0].buy_links.map(({ url }) => url)
-      );
-      console.log(data);
-      console.log(link);
-      createContent(responce);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  addMarkup(markUp, refs.cardInfoBook);
 }
 
-function createContent(arr) {
-  const cardBook = arr
-    .map(el => {
-      return `
-<img class = "image " src="${el.book_image}" alt=""   />
+function addMarkup(markup, el) {
+  el.innerHTML = markup;
+}
+
+function createContent({ book_image, title, author, buy_links }) {
+  const cardBook = `
+<img class = "image " src="${book_image}" alt=""   />
 <div class = "info-book">
-<h2 class = "title">${el.title}</h2>
-<p class="author">${el.author}</p>
+<h2 class = "title">${title}</h2>
+<p class="author">${author}</p>
 <p class="description"></p>
 <ul class = "list-links">
-<li class="item-book"><a href="" target="_blank" class=""></a></li>
+<li class="item-book"><a href="${buy_links[0].url}" target="_blank" class="">${linkShop.amazon}</a></li>
 <li class="item-book"><a href="" target="_blank" class=""></a></li>
 <li class="item-book"><a href="" target="_blank" class=""></a></li>
 </ul>
 </div>`;
-    })
-    .join('');
-  refs.cardInfoBook.insertAdjacentHTML('afterbegin', cardBook);
+  console.log(buy_links[0].url);
+
+  return cardBook;
+  // refs.cardInfoBook.insertAdjacentHTML('afterbegin', cardBook);
 }
 
-const linkShop = {
-  amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
-  appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
-  bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
-};
+// const linkShop = {
+//   amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
+//   appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
+//   bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
+// };
 
 function getLink(name) {
   if (name in linkShop) {
