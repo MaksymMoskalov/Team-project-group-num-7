@@ -12,17 +12,18 @@ const refs = {
   congratulations: document.querySelector('.congratulations'),
   btnList: document.querySelector('.list-btn'),
   btnListRemove: document.querySelector('.list-btn-remove'),
-  bookElement: document.querySelector('.book'),
+  bookElement: document.querySelector('.ul-global'),
 };
 console.log(refs.cardInfoBook);
 console.log(refs.btnList);
 console.log(refs.backdrop);
 console.log(refs.bookElement);
 
-refs.btn.addEventListener('click', openModal);
+// refs.btn.addEventListener('click', openModal);
 refs.btnList.addEventListener('click', cheangeTextOfBtn);
 refs.modalBtnClose.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', clickOnBackdrop);
+// refs.btnListRemove.addEventListener('click', addBtnRemove);
 refs.bookElement.addEventListener('click', addcontent);
 
 const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
@@ -34,21 +35,12 @@ function getInfoByBooks(bookId) {
   });
 }
 
-const linkShop = {
-  amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
-  appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
-  bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
-};
-
-function getLink(name) {
-  if (name in linkShop) {
-    const image = linkShop[name];
-    return image;
-  } else return '';
-}
 // слушатель события должен быть
 function addcontent(e) {
-  getInfoByBooks()
+  openModal();
+  console.log(e);
+
+  getInfoByBooks('642fd89ac8cf5ee957f12361')
     .then(responce => {
       const data = responce.data.map(book => book.books[0]);
       const link = responce.data.map(book =>
@@ -56,7 +48,7 @@ function addcontent(e) {
       );
       console.log(data);
       console.log(link);
-      createContent(data);
+      createContent(responce);
     })
     .catch(error => {
       console.log(error);
@@ -81,6 +73,19 @@ function createContent(arr) {
     })
     .join('');
   refs.cardInfoBook.insertAdjacentHTML('afterbegin', cardBook);
+}
+
+const linkShop = {
+  amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
+  appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
+  bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
+};
+
+function getLink(name) {
+  if (name in linkShop) {
+    const image = linkShop[name];
+    return image;
+  } else return '';
 }
 
 // async function getInfoAboutBook(bookId) {
@@ -123,8 +128,10 @@ function onEscKeyPress(event) {
 }
 
 function cheangeTextOfBtn() {
+  refs.btnList.textContent = 'remove from the shopping list';
+  refs.congratulations.hidden = false;
+  // refs.btnListRemove.hidden = true;
   // refs.btnList.hidden = false;
-  // refs.btnList.hidden = true;
   // refs.btnListRemove.hidden = false;
   // if ((refs.btnList.textContent = 'Add to shopping list')) {
   // removeBtnList = refs.btnList.textContent = 'remove from the shopping list';
