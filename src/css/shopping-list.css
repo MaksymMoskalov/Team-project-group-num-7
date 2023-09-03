@@ -6,9 +6,11 @@
   padding-top: 40px;
 }
 .shop-container {
-  position: relative;
   display: flex;
   gap: 40px;
+}
+.shop-block {
+  position: relative;
 }
 .shop-container .support-box {
   display: none;
@@ -257,6 +259,9 @@
   .empty p {
     width: 349px;
     margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 24px; /* 128.571% */
+    letter-spacing: -0.36px;
   }
   .empty img {
     width: 322px;
