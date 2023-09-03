@@ -1,0 +1,28 @@
+/* body.light-theme {
+    background-color: #fff;
+    color: #333;
+} */
+
+body.dark-theme {
+    background-color: 
+    rgba(32, 32, 36, 1);
+    color: #fff;
+} 
+/****/
+body.dark-theme .header {
+    background-color: #111;
+    color: rgba(243, 243, 243, 1);
+}
+body.dark-theme .svg-dark {
+    fill: rgba(243, 243, 243, 1);
+}
+.mobile-menu {
+    background-color: inherit;
+}
+body.dark-theme .mobile-menu .svg-dark {
+    stroke: rgba(243, 243, 243, 1);
+}
+
+body.light-theme .mobile-menu .svg-dark {
+    stroke: #111;
+}
