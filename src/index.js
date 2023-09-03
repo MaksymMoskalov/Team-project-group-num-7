@@ -6,3 +6,4 @@ import './js/shopping-list.js';
 import './js/scroll-up.js';
 import './js/modal-window-info-book.js';
 import './js/support.js';
+import './js/category-list.js';
