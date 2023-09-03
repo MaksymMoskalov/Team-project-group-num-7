@@ -119,6 +119,7 @@ body.show-modal .backdrop {
   cursor: pointer;
 }
 .list-btn-remove {
+  padding-bottom: 40px;
   font-family: DM Sans;
   font-size: 18px;
   font-style: normal;

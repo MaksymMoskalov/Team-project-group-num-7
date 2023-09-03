@@ -3,6 +3,28 @@ import amazon from '../images/link-png/amazon.png';
 import applebook from '../images/link-png/applebook.png';
 import bookshop from '../images/link-png/bookshop.png';
 
+const refs = {
+  btn: document.querySelector('.load-more'),
+  backdrop: document.querySelector('.backdrop'),
+  modal: document.querySelector('.modal'),
+  modalBtnClose: document.querySelector('.modal-btn-close'),
+  cardInfoBook: document.querySelector('.info-book-card'),
+  congratulations: document.querySelector('.congratulations'),
+  btnList: document.querySelector('.list-btn'),
+  btnListRemove: document.querySelector('.list-btn-remove'),
+  bookElement: document.querySelector('.book'),
+};
+console.log(refs.cardInfoBook);
+console.log(refs.btnList);
+console.log(refs.backdrop);
+console.log(refs.bookElement);
+
+refs.btn.addEventListener('click', openModal);
+refs.btnList.addEventListener('click', cheangeTextOfBtn);
+refs.modalBtnClose.addEventListener('click', closeModal);
+refs.backdrop.addEventListener('click', clickOnBackdrop);
+refs.bookElement.addEventListener('click', addcontent);
+
 const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
 function getInfoByBooks(bookId) {
   return axios.get(BASE_URL, {
@@ -75,25 +97,6 @@ function createContent(arr) {
 //   };
 //   return bookObj;
 // }
-
-const refs = {
-  btn: document.querySelector('.load-more'),
-  backdrop: document.querySelector('.backdrop'),
-  modal: document.querySelector('.modal'),
-  modalBtnClose: document.querySelector('.modal-btn-close'),
-  cardInfoBook: document.querySelector('.info-book-card'),
-  congratulations: document.querySelector('.congratulations'),
-  btnList: document.querySelector('.list-btn'),
-  btnListRemove: document.querySelector('.list-btn-remove'),
-};
-console.log(refs.cardInfoBook);
-console.log(refs.btnList);
-console.log(refs.backdrop);
-
-refs.btn.addEventListener('click', openModal);
-refs.btnList.addEventListener('click', cheangeTextOfBtn);
-refs.modalBtnClose.addEventListener('click', closeModal);
-refs.backdrop.addEventListener('click', clickOnBackdrop);
 
 function openModal() {
   window.addEventListener('keydown', onEscKeyPress);
