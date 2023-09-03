@@ -1,0 +1,42 @@
+#pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* Стилі для кнопок */
+.tui-pagination .tui-page-btn {
+  cursor: pointer;
+  background-color: #fff;
+  color: #111;
+  width: 44px;
+  height: 44px;
+  stroke-width: 1px;
+  stroke: #111;
+}
+
+/* Стилі для номерів сторінок */
+.tui-pagination .tui-page-number {
+  color: #111;
+}
+
+/* Стилі для активної сторінки */
+.tui-pagination .tui-page-active {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Змінити колір тексту "Попередня" і "Наступна" */
+.tui-pagination .tui-page-btn.tui-first {
+  color: #b4afaf;
+  fill: #111;
+}
+
+.tui-pagination .tui-page-btn.tui-last {
+  color: #000000;
+  fill: #eac645;
+  stroke-width: 1px;
+  stroke: #000;
+}
