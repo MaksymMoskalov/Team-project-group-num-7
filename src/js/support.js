@@ -1,4 +1,3 @@
-
 const charityFunds = [
   {
     title: 'Save the Children',
@@ -68,5 +67,3 @@ function createMarkup(arr) {
     )
     .join("");
 }
-
-
