@@ -1,11 +1,11 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const ulGlobal = document.querySelector('.ul-global');
 
 async function axiosPosts() {
   const URL = 'https://books-backend.p.goit.global/books/top-books';
   const { data } = await axios.get(URL);
-  console.log('data:', data);
   workWithData({ data });
 }
 axiosPosts();
@@ -14,7 +14,6 @@ function workWithData({ data }) {
   try {
     data.forEach(category => {
       const { list_name, books } = category;
-      console.log('books', books);
       if (books.length > 0) {
         const liGlobal = document.createElement('li');
         liGlobal.classList.add('li-in-global');
@@ -42,7 +41,10 @@ function workWithData({ data }) {
           categoryBooks.forEach(book => {
             book.style.display = 'block';
           });
-          seeMore.style.display = 'none';
+          if ((categoryBooks.length = books.length)) {
+            seeMore.style.display = 'none';
+            Notiflix.Notify.info('Sorry, there are no more books');
+          }
         });
       }
     });
@@ -65,5 +67,3 @@ function createBookListMarkup({ books }) {
     .join('');
   return markup;
 }
-
-function seeMore() {}
