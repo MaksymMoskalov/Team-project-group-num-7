@@ -2,12 +2,12 @@ const charityFunds = [
   {
     title: 'Save the Children',
     url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis',
-    img: './images/support/save_the_children.png',
+    img: 'images/support/save_the_children.png',
   },
   {
     title: 'Project HOPE',
     url: 'https://www.projecthope.org/country/ukraine/',
-    img: './images/support/project_hope.png',
+    img: 'images/support/project_hope.png',
   },
   {
     title: 'UNITED24',
