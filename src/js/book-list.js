@@ -17,6 +17,7 @@ function workWithData({ data }) {
       console.log('books', books);
       if (books.length > 0) {
         const liGlobal = document.createElement('li');
+        liGlobal.classList.add('li-in-global');
         ulGlobal.appendChild(liGlobal);
 
         const categoryPar = document.createElement('p');
@@ -55,7 +56,7 @@ function createBookListMarkup({ books }) {
     .map(({ list_name, book_image, title, author, _id }) => {
       return `<li class="book" data-id="${_id}">
       <div class='box'>
-        <img src="${book_image}" alt="${list_name}" />
+        <img src="${book_image}" alt="${list_name}" class="img-book"/>
       </div>
       <h3 class="title-main">${title}</h3>
       <p class="author-main">${author}</p>
