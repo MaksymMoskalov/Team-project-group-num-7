@@ -45,6 +45,10 @@
   margin-left: 90px;
 }
 
+
 .mobile-grup {
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  right: 0; 
 }
