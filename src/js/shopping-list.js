@@ -93,6 +93,9 @@ ulList.addEventListener('click', deleteBtn);
 
 // Delete from LocalStorage and fron Shopping List
 function deleteBtn(event) {
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
   const data = getLocalData();
   console.log(data);
   const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
