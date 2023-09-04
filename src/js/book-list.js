@@ -41,10 +41,10 @@ function workWithData({ data }) {
           categoryBooks.forEach(book => {
             book.style.display = 'block';
           });
-          if (categoryBooks.length === books.length) {
-            seeMore.style.display = 'none';
+          if (categoryBooks.length >= books.length) {
             Notiflix.Notify.info('Sorry, there are no more books');
           }
+          seeMore.style.display = 'none';
         });
       }
     });
