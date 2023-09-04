@@ -67,3 +67,5 @@ function createBookListMarkup({ books }) {
     .join('');
   return markup;
 }
+
+export { createBookListMarkup, workWithData, axiosPosts };
