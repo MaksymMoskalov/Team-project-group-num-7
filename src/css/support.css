@@ -10,23 +10,6 @@
   box-shadow: 0px 10px 10px 0px rgba(245, 245, 247, 0.1);
 }
 
-@media screen and (max-width: 767px) {
-  .support-box {
-    height: 352px;
-    padding-bottom: 20px;
-  }
-.charity-box {
-
-  height: 188px;
-
-}
-.button-slide {
-margin: 16px auto 0;
-}
-
-
-
-}
 
 .support-title {
   color: #fff;
@@ -94,6 +77,11 @@ margin: 16px auto 0;
   filter: brightness(0) invert(1);
 }
 
+.charity-logo:hover {
+  
+  filter:none;
+}
+
 .button-slide {
   position: relative;
   text-align: center;
@@ -118,3 +106,35 @@ margin: 16px auto 0;
   transform: translate(-36%, -36%);
 }
 
+@media screen and (max-width: 767px) {
+  .support-box {
+    height: 352px;
+    padding-bottom: 20px;
+  }
+
+  .charity-box {
+
+    height: 200px;
+
+  }
+
+  .button-slide {
+    margin: 16px auto 0;
+  }
+
+  .charity-wrapper {
+
+    max-height: 320px;
+
+  }
+
+  .charity-box-clicked {
+    transform: translate(0, -110%);
+  }
+.list-item-fund:not(:last-child) {
+  margin-bottom: 12px;
+
+}
+
+
+}
