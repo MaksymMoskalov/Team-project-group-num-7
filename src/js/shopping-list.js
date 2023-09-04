@@ -1,3 +1,4 @@
-// const empty = document.querySelector('.empty');
-// console.log(empty);
-// empty.style.display = 'none';
+
+
+const empty = document.querySelector('.empty');
+empty.style.display = 'none';
