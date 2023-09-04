@@ -150,6 +150,13 @@ body.show-modal .backdrop {
     color: #fff;
   }
 }
+/* .modal-icon:hover,
+.modal-icon:focus {
+  stroke: var(--violet);
+}
+button:hover svg {
+  stroke: var(--violet);
+} */
 
 .list-btn-remove {
   padding-bottom: 40px;
