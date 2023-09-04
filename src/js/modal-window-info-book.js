@@ -38,26 +38,32 @@ let bookID = '';
 async function addcontent(e) {
   const id = e.target.closest('.book');
   bookID = id.dataset.id;
-
+  refs.btnList.textContent = 'Add to shopping list';
+  refs.congratulations.hidden = true;
   openModal();
   const data = await getInfoByBooks(id.dataset.id);
   currentBook = data;
 
   const markUp = createContent(data);
-  console.log(data);
   addMarkup(markUp, refs.cardInfoBook);
 
-  const arryBook = getLocalData();
-
-  for (book of arryBook) {
-    console.log(book._id);
-    console.log(bookID);
-
-    if (book._id === currentBook) {
+  const arryBook = getLocalData().filter(({ _id }) => {
+    if (_id === id.dataset.id) {
       refs.btnList.textContent = 'remove from the shopping list';
       refs.congratulations.hidden = false;
     }
-  }
+  });
+  console.log('arryBook', arryBook);
+
+  // for (book of arryBook) {
+  //   console.log(book._id);
+  //   console.log(bookID);
+
+  //   if (book._id === currentBook) {
+  //     refs.btnList.textContent = 'remove from the shopping list';
+  //     refs.congratulations.hidden = false;
+  //   }
+  // }
 }
 
 function addMarkup(markup, el) {
@@ -127,8 +133,23 @@ function onEscKeyPress(event) {
 
 function cheangeTextOfBtn() {
   toLocalStorage(currentBook);
-  const arryBook = getLocalData();
+  console.log(bookID);
+  const arryBook = getLocalData().filter(({ _id }) => _id === bookID);
+  // savedData(arryBook);
+  // if (!getLocalData().length) {
+  //   toLocalStorage(currentBook);
+  // }
+
+  // const arryBook = getLocalData().filter(({ _id }) => {
+  //   if (_id === bookID) {
+  //   }
+  // });
+  // if (arryBook.length) {
+  //   toLocalStorage(currentBook);
+  // }
+  // return;
   console.log(arryBook);
+
   // for (book of arryBook) {
   //   console.log(book._id);
   //   console.log(bookID);
