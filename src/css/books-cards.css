@@ -62,9 +62,11 @@
 }
 
 .book-card-item {
+  cursor: pointer;
   width: 335px;
   max-height: 535px;
 }
+
 @media only screen and (min-width: 768px) {
   .book-card-item {
     width: 218px;
