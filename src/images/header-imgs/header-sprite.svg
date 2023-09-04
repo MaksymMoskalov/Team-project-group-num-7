@@ -37,5 +37,8 @@
 <symbol id="icon-arrow-narrow-right" viewBox="0 0 32 32">
 <path fill="none" stroke="#eac645" style="stroke: var(--color1, #eac645)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M5.334 16h21.333M26.667 16l-8-8M26.667 16l-8 8"></path>
 </symbol>
+<symbol id="avatar-triangle" viewBox="0 0 23 26">
+<path d="M4.7915 9.75H18.2082L12.1774 16.5674C11.9977 16.7705 11.754 16.8846 11.4998 16.8846C11.2457 16.8846 11.002 16.7705 10.8223 16.5674L4.7915 9.75Z" fill="white"></path>
+</symbol>
 </defs>
 </svg>
