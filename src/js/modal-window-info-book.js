@@ -19,11 +19,10 @@ console.log(refs.btnList);
 console.log(refs.backdrop);
 console.log(refs.bookElement);
 
-// refs.btn.addEventListener('click', openModal);
 refs.btnList.addEventListener('click', cheangeTextOfBtn);
 refs.modalBtnClose.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', clickOnBackdrop);
-// refs.btnListRemove.addEventListener('click', addBtnRemove);
+
 refs.bookElement.addEventListener('click', addcontent);
 
 const BASE_URL = 'https://books-backend.p.goit.global/books/';
@@ -33,44 +32,56 @@ async function getInfoByBooks(bookId) {
   );
   return getData.data;
 }
+let currentBook = '';
+let bookID = '';
 
 async function addcontent(e) {
   const id = e.target.closest('.book');
+  bookID = id.dataset.id;
   openModal();
   const data = await getInfoByBooks(id.dataset.id);
-  const markUp = createContent(data);
+  currentBook = data;
 
+  const markUp = createContent(data);
   addMarkup(markUp, refs.cardInfoBook);
+
+  const isPresent = getLocalData().some(({ _id }) => _id === id.dataset.id);
+  buttonChange(isPresent);
 }
 
 function addMarkup(markup, el) {
   el.innerHTML = markup;
 }
-
-function createContent({ book_image, title, author, buy_links }) {
+const nocontet = 'no content';
+function createContent({ book_image, title, author, description, buy_links }) {
   const cardBook = `
-<img class = "image " src="${book_image}" alt=""   />
+<img class = "image " src="${book_image}" alt="photo of the book"   />
 <div class = "info-book">
 <h2 class = "title">${title}</h2>
 <p class="author">${author}</p>
-<p class="description"></p>
+<p class="description">${description || nocontet}</p>
 <ul class = "list-links">
-<li class="item-book"><a href="${buy_links[0].url}" target="_blank" class="">${linkShop.amazon}</a></li>
-<li class="item-book"><a href="" target="_blank" class=""></a></li>
-<li class="item-book"><a href="" target="_blank" class=""></a></li>
+<li class="item-book"><a href="${
+    buy_links[0].url
+  }" target="_blank" ><img class = "" src="${amazon}" alt="${
+    buy_links[0].name
+  }"   /></a></li>
+<li class="item-book"><a href="${
+    buy_links[1].url
+  }" target="_blank" ><img class = "" src="${applebook}" alt="${
+    buy_links[1].name
+  }"   /></a></li>
+<li class="item-book"><a href="${
+    buy_links[4].url
+  }" target="_blank" ><img class = "" src="${bookshop}" alt="${
+    buy_links[4].name
+  }"   /></a></li>
 </ul>
 </div>`;
   console.log(buy_links[0].url);
 
   return cardBook;
-  // refs.cardInfoBook.insertAdjacentHTML('afterbegin', cardBook);
 }
-
-// const linkShop = {
-//   amazon: `<img src= "${amazon}" alt="logo Amazon" width="62" height="19">`,
-//   appleBooks: `<img src="${applebook}" alt="logo Apple" width="33" height="32">`,
-//   bookshop: `<img src="${bookshop}" alt="logo Bookshop" width="38" height="36">`,
-// };
 
 function getLink(name) {
   if (name in linkShop) {
@@ -78,21 +89,6 @@ function getLink(name) {
     return image;
   } else return '';
 }
-
-// async function getInfoAboutBook(bookId) {
-//   const response = await fetch(`${URL}${bookId}`);
-//   const dataRespons = await response.json();
-//   const bookObj = {
-//     id: dataRespons._id,
-//     img: dataRespons.book_image,
-//     bookName: dataRespons.list_name,
-//     author: dataRespons.author,
-//     description: dataRespons.description,
-//     shops: dataRespons.buy_links,
-//     title: dataRespons.title,
-//   };
-//   return bookObj;
-// }
 
 function openModal() {
   window.addEventListener('keydown', onEscKeyPress);
@@ -118,23 +114,48 @@ function onEscKeyPress(event) {
   }
 }
 
-function cheangeTextOfBtn() {
-  refs.btnList.textContent = 'remove from the shopping list';
-  refs.congratulations.hidden = false;
-  // refs.btnListRemove.hidden = true;
-  // refs.btnList.hidden = false;
-  // refs.btnListRemove.hidden = false;
-  // if ((refs.btnList.textContent = 'Add to shopping list')) {
-  // removeBtnList = refs.btnList.textContent = 'remove from the shopping list';
-  // refs.modal.style.height = '501px';
-  // refs.congratulations.hidden = false;
-  // refs.btnList.addEventListener('click', event => {
-  //   console.log(event);
-  //   if (event.currentTarget) {
-  //     refs.btnList.textContent = 'add to shopping list';
-  //     refs.modal.style.height = '465px';
-  //     refs.congratulations.hidden = true;
-  //   }
-  // });
-  // }
+function cheangeTextOfBtn(event) {
+  console.log(event.target);
+  let flag = false;
+  const action = event.target.dataset.action;
+  if (action === 'add') {
+    toLocalStorage(currentBook);
+    flag = true;
+  } else {
+    const data = getLocalData();
+    const idx = data.findIndex(({ _id }) => _id === bookID);
+    data.splice(idx, 1);
+    savedData(data);
+  }
+  buttonChange(flag);
+}
+
+function buttonChange(value) {
+  if (value) {
+    refs.btnList.textContent = 'remove from the shopping list';
+    refs.congratulations.hidden = false;
+    refs.btnList.setAttribute('data-action', 'remove');
+  } else {
+    refs.btnList.textContent = 'Add to shopping list';
+    refs.congratulations.hidden = true;
+    refs.btnList.setAttribute('data-action', 'add');
+  }
+}
+
+const STORAGE_KEY = 'book-to-buy';
+function toLocalStorage(value) {
+  const arrayOfBooks = getLocalData();
+  arrayOfBooks.push(value);
+  savedData(arrayOfBooks);
+}
+function getLocalData() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+function savedData(params) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
 }
