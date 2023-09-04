@@ -1,11 +1,11 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const ulGlobal = document.querySelector('.ul-global');
 
 async function axiosPosts() {
   const URL = 'https://books-backend.p.goit.global/books/top-books';
   const { data } = await axios.get(URL);
-  console.log('data:', data);
   workWithData({ data });
 }
 axiosPosts();
@@ -14,9 +14,9 @@ function workWithData({ data }) {
   try {
     data.forEach(category => {
       const { list_name, books } = category;
-      console.log('books', books);
       if (books.length > 0) {
         const liGlobal = document.createElement('li');
+        liGlobal.classList.add('li-in-global');
         ulGlobal.appendChild(liGlobal);
 
         const categoryPar = document.createElement('p');
@@ -41,7 +41,10 @@ function workWithData({ data }) {
           categoryBooks.forEach(book => {
             book.style.display = 'block';
           });
-          seeMore.style.display = 'none';
+          if ((categoryBooks.length = books.length)) {
+            seeMore.style.display = 'none';
+            Notiflix.Notify.info('Sorry, there are no more books');
+          }
         });
       }
     });
@@ -55,7 +58,7 @@ function createBookListMarkup({ books }) {
     .map(({ list_name, book_image, title, author, _id }) => {
       return `<li class="book" data-id="${_id}">
       <div class='box'>
-        <img src="${book_image}" alt="${list_name}" />
+        <img src="${book_image}" alt="${list_name}" class="img-book"/>
       </div>
       <h3 class="title-main">${title}</h3>
       <p class="author-main">${author}</p>
@@ -64,5 +67,3 @@ function createBookListMarkup({ books }) {
     .join('');
   return markup;
 }
-
-function seeMore() {}
