@@ -142,6 +142,12 @@ body.show-modal .backdrop {
     border: 2px solid var(--violet);
     background-color: transparent;
     cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .list-btn:hover,
+  .list-btn:focus {
+    background-color: var(--violet);
+    color: #fff;
   }
 }
 
@@ -268,6 +274,11 @@ body.show-modal .backdrop {
     border: 2px solid var(--violet);
     background-color: transparent;
     cursor: pointer;
+  }
+  .list-btn:hover,
+  .list-btn:focus {
+    background-color: var(--violet);
+    color: #fff;
   }
   .list-btn-remove {
     width: 279px;
