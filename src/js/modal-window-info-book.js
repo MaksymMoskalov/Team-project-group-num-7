@@ -39,25 +39,37 @@ async function addcontent(e) {
   openModal();
   const data = await getInfoByBooks(id.dataset.id);
   const markUp = createContent(data);
-
+  console.log(data);
   addMarkup(markUp, refs.cardInfoBook);
 }
 
 function addMarkup(markup, el) {
   el.innerHTML = markup;
 }
-
-function createContent({ book_image, title, author, buy_links }) {
+const nocontet = 'no content';
+function createContent({ book_image, title, author, description, buy_links }) {
   const cardBook = `
 <img class = "image " src="${book_image}" alt=""   />
 <div class = "info-book">
 <h2 class = "title">${title}</h2>
 <p class="author">${author}</p>
-<p class="description"></p>
+<p class="description">${description || nocontet}</p>
 <ul class = "list-links">
-<li class="item-book"><a href="${buy_links[0].url}" target="_blank" class="">${linkShop.amazon}</a></li>
-<li class="item-book"><a href="" target="_blank" class=""></a></li>
-<li class="item-book"><a href="" target="_blank" class=""></a></li>
+<li class="item-book"><a href="${
+    buy_links[0].url
+  }" target="_blank" ><img class = "" src="${amazon}" alt="${
+    buy_links[0].name
+  }"   /></a></li>
+<li class="item-book"><a href="${
+    buy_links[1].url
+  }" target="_blank" ><img class = "" src="${applebook}" alt="${
+    buy_links[1].name
+  }"   /></a></li>
+<li class="item-book"><a href="${
+    buy_links[4].url
+  }" target="_blank" ><img class = "" src="${bookshop}" alt="${
+    buy_links[4].name
+  }"   /></a></li>
 </ul>
 </div>`;
   console.log(buy_links[0].url);
