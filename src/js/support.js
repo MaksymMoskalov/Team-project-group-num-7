@@ -62,14 +62,29 @@ function createMarkup(arr) {
         counter++;
         const paddedCounter = counter.toString().padStart(2, '0');
         return `<li class="list-item-fund">
+        <a href="${url}" target="_blank">
         <div class="wrap-counter-img">
         <span class="counter">${paddedCounter}</span> 
-          <a href="${url}" target="_blank">
             <img src="${img}" alt="${title}" class="charity-logo">
-          </a>
           </div>
+          </a>
         </li>`;
       }
     )
     .join("");
+}
+
+const buttonSlide = document.querySelector('.button-slide');
+
+
+buttonSlide.addEventListener('click', toggleCharityBox);
+
+function toggleCharityBox() {
+  if (charityFundsContainer.classList.contains('charity-box-clicked')) {
+
+    charityFundsContainer.classList.remove('charity-box-clicked');
+  } else {
+    
+    charityFundsContainer.classList.add('charity-box-clicked');
+  }
 }
