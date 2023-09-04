@@ -1,5 +1,11 @@
 .main-headline {
   color: var(--black);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: -1.92px;
+  margin-bottom: 40px;
 }
 .headline-books {
   color: var(--violet);
