@@ -1,12 +1,25 @@
 .header {
-  border-radius: 0px 0px 8px 8px;
-  border: 1.5px solid #111;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    height: 72px;
+  }
 }
 
 .header .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+
+  border-radius: 0px 0px 8px 8px;
+  border: 1.5px solid #111;
+}
+
+@media screen and (min-width: 768px) {
+  .header .container {
+    /* justify-content: space-between; */
+  }
 }
 
 .nav-wraper {
@@ -16,6 +29,12 @@
 .nav {
   display: flex;
   align-items: baseline;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: -0.56px;
+  text-transform: uppercase;
 }
 
 .brand-logo {
@@ -26,25 +45,59 @@
   padding-bottom: 18px;
 }
 
+@media screen and (min-width: 768px) {
+  .brand-logo {
+    padding: 0 0;
+  }
+}
+
 .home-link {
   display: none;
 }
+
+.shopping-list-link .shpping-link-back:hover {
+  background-color: var(--yellow);
+}
+
+.shoper-svg {
+  margin-left: 4px;
+}
+
 .shopping-list-link {
   display: none;
 }
 
+.shpping-link-back {
+  display: flex;
+  align-items: center;
+  padding: 7px 16px;
+  border-radius: 36px;
+}
+
 @media screen and (min-width: 768px) {
   .shopping-list-link {
-    display: block;
-    padding-top: 22px;
-    padding-bottom: 22px;
+    display: flex;
+    align-items: center;
+    padding-top: 19px;
+    padding-bottom: 18px;
+    margin-left: 16px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .home-link {
     display: block;
+    padding-top: 20px;
+    padding-bottom: 16px;
+    margin-left: 40px;
   }
+}
+
+.current-page {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 36px;
+  background: #eac645;
 }
 
 .switch {
@@ -53,6 +106,13 @@
   width: 40px;
   height: 20px;
   margin-right: 14px;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .switch {
+    margin-right: 24px;
+  }
 }
 
 /* Hide default HTML checkbox */
@@ -107,6 +167,44 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.person-logo {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .person-logo {
+    display: flex;
+    align-items: center;
+    width: 184px;
+    height: 45px;
+    background-color: var(--violet);
+    border-radius: 36px;
+  }
+}
+
+.avatar-text {
+  margin-left: 9px;
+  margin-right: 4px;
+
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.44px;
+  color: var(--white);
+}
+
+.img-thumb {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 12px;
+}
+.avatar-img {
+  width: 100%;
+  object-fit: contain;
 }
 
 .mobile-menu {
