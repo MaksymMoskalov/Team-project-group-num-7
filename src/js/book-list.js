@@ -41,7 +41,7 @@ function workWithData({ data }) {
           categoryBooks.forEach(book => {
             book.style.display = 'block';
           });
-          if ((categoryBooks.length = books.length)) {
+          if (categoryBooks.length === books.length) {
             seeMore.style.display = 'none';
             Notiflix.Notify.info('Sorry, there are no more books');
           }
