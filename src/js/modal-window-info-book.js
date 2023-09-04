@@ -38,8 +38,6 @@ let bookID = '';
 async function addcontent(e) {
   const id = e.target.closest('.book');
   bookID = id.dataset.id;
-  refs.btnList.textContent = 'Add to shopping list';
-  refs.congratulations.hidden = true;
   openModal();
   const data = await getInfoByBooks(id.dataset.id);
   currentBook = data;
@@ -47,23 +45,8 @@ async function addcontent(e) {
   const markUp = createContent(data);
   addMarkup(markUp, refs.cardInfoBook);
 
-  const arryBook = getLocalData().filter(({ _id }) => {
-    if (_id === id.dataset.id) {
-      refs.btnList.textContent = 'remove from the shopping list';
-      refs.congratulations.hidden = false;
-    }
-  });
-  console.log('arryBook', arryBook);
-
-  // for (book of arryBook) {
-  //   console.log(book._id);
-  //   console.log(bookID);
-
-  //   if (book._id === currentBook) {
-  //     refs.btnList.textContent = 'remove from the shopping list';
-  //     refs.congratulations.hidden = false;
-  //   }
-  // }
+  const isPresent = getLocalData().some(({ _id }) => _id === id.dataset.id);
+  buttonChange(isPresent);
 }
 
 function addMarkup(markup, el) {
@@ -131,35 +114,32 @@ function onEscKeyPress(event) {
   }
 }
 
-function cheangeTextOfBtn() {
-  toLocalStorage(currentBook);
-  console.log(bookID);
-  const arryBook = getLocalData().filter(({ _id }) => _id === bookID);
-  // savedData(arryBook);
-  // if (!getLocalData().length) {
-  //   toLocalStorage(currentBook);
-  // }
+function cheangeTextOfBtn(event) {
+  console.log(event.target);
+  let flag = false;
+  const action = event.target.dataset.action;
+  if (action === 'add') {
+    toLocalStorage(currentBook);
+    flag = true;
+  } else {
+    const data = getLocalData();
+    const idx = data.findIndex(({ _id }) => _id === bookID);
+    data.splice(idx, 1);
+    savedData(data);
+  }
+  buttonChange(flag);
+}
 
-  // const arryBook = getLocalData().filter(({ _id }) => {
-  //   if (_id === bookID) {
-  //   }
-  // });
-  // if (arryBook.length) {
-  //   toLocalStorage(currentBook);
-  // }
-  // return;
-  console.log(arryBook);
-
-  // for (book of arryBook) {
-  //   console.log(book._id);
-  //   console.log(bookID);
-  //   if (book._id === bookID) {
-  //     refs.btnList.textContent = 'remove from the shopping list';
-  //     refs.congratulations.hidden = false;
-  //   } else if (book._id !== bookID) {
-  //     refs.congratulations.hidden = true;
-  //   }
-  // }
+function buttonChange(value) {
+  if (value) {
+    refs.btnList.textContent = 'remove from the shopping list';
+    refs.congratulations.hidden = false;
+    refs.btnList.setAttribute('data-action', 'remove');
+  } else {
+    refs.btnList.textContent = 'Add to shopping list';
+    refs.congratulations.hidden = true;
+    refs.btnList.setAttribute('data-action', 'add');
+  }
 }
 
 const STORAGE_KEY = 'book-to-buy';
