@@ -36,7 +36,7 @@ let currentBook = '';
 let bookID = '';
 
 async function addcontent(e) {
-  const id = e.target.closest('.book');
+  const id = e.target.closest('.book-js');
   bookID = id.dataset.id;
   openModal();
   const data = await getInfoByBooks(id.dataset.id);

@@ -56,7 +56,7 @@ function workWithData({ data }) {
 function createBookListMarkup({ books }) {
   const markup = books
     .map(({ list_name, book_image, title, author, _id }) => {
-      return `<li class="book" data-id="${_id}">
+      return `<li class="book book-js" data-id="${_id}">
       <div class='box'>
         <img src="${book_image}" alt="${list_name}" class="img-book"/>
       </div>
