@@ -17,6 +17,9 @@
   }
 }
 .book-card-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--black);
   font-size: 16px;
   font-weight: 700;
@@ -27,7 +30,6 @@
 
   margin-bottom: 4px;
 }
-
 .book-card-text {
   color: #b4afaf;
   font-size: 12px;
@@ -61,15 +63,17 @@
 
 .book-card-item {
   width: 335px;
-  height: auto;
+  max-height: 535px;
 }
 @media only screen and (min-width: 768px) {
   .book-card-item {
     width: 218px;
+    max-height: 366px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .book-card-item {
     width: 180px;
+    max-height: 306px;
   }
 }
