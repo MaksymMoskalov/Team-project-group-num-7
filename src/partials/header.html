@@ -5,28 +5,49 @@
         <svg class="" width="24" height="24">
           <use href="./images/header-imgs/header-sprite.svg#icon-logo"></use>
         </svg>
-        <svg class="" width="77" height="13">
+        <svg class="svg-dark" width="77" height="13">
           <use
             href="./images/header-imgs/header-sprite.svg#icon-Bookshelf"
           ></use>
         </svg>
       </a>
       <nav class="nav">
-        <a href="./index.html" class="home-link">Home</a>
+        <a href="./index.html" class="home-link"
+          ><span class="current-page home-link-back">Home</span></a
+        >
         <a href="./shopping-list.html" class="shopping-list-link"
-          >Shopping list
-          <svg class="" width="20" height="20">
-            <use
-              href="./images/header-imgs/header-sprite.svg#icon-uil_cart"
-            ></use>
-          </svg>
+          ><span class="shpping-link-back">
+            Shopping list
+            <svg class="svg-dark shoper-svg" width="20" height="20">
+              <use
+                href="./images/header-imgs/header-sprite.svg#icon-uil_cart"
+              ></use>
+            </svg>
+          </span>
         </a>
       </nav>
     </div>
     <label class="switch">
-      <input type="checkbox" />
+      <input type="checkbox" id="theme-toggle" />
       <span class="slider round"></span>
     </label>
+
+    <div class="person-logo">
+      <div class="img-thumb">
+        <img
+          src="./images/header-imgs/Ellipse 3-min.jpg"
+          alt="Person avatar"
+          class="avatar-img"
+        />
+      </div>
+      <span class="avatar-text">Hello</span>
+      <svg width="23" height="26">
+        <use
+          href="./images/header-imgs/header-sprite.svg#avatar-triangle"
+        ></use>
+      </svg>
+    </div>
+
     <button
       type="button"
       class="mobile-menu js-open-menu"
@@ -36,11 +57,11 @@
       <svg
         width="28"
         height="28"
-        class="mobile-svg"
+        class="mobile-svg svg-dark"
         aria-label="mobile menu switcher"
       >
         <use
-          class="icon-menu"
+          class="icon-menu svg-dark"
           href="./images/header-imgs/header-sprite.svg#icon-align-left"
         ></use>
         <use
@@ -51,11 +72,3 @@
     </button>
   </div>
 </header>
-
-<!-- <div class="menu-container js-menu-container" id="mobile-menu">
-  <button class="menu-toggle js-close-menu">
-    <svg class="modal-icon" width="8" height="8">
-      <use href=""></use>
-    </svg>
-  </button>
-</div> -->
