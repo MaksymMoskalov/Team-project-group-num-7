@@ -8,21 +8,32 @@ empty.classList.add('not-is-hidden');
 const ulList = document.querySelector('.book-list');
 const STORAGE_KEY = 'book-to-buy';
 
-async function addToShopList() { 
-    const getArr = await JSON.parse(localStorage.getItem(STORAGE_KEY));
+async function addToShopList() {
+  const getArr = await JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (getArr) {
     if (getArr.length > 0) {
-        empty.classList.replace('not-is-hidden', 'is-hidden');
-        const markup = createBookListMarkUp(getArr);
-        ulList.innerHTML = markup;
+      empty.classList.replace('not-is-hidden', 'is-hidden');
+      const markup = createBookListMarkUp(getArr);
+      ulList.innerHTML = markup;
+    } else {
+      empty.classList.replace('is-hidden', 'not-is-hidden');
     }
-    else {
-        empty.classList.replace('is-hidden', 'not-is-hidden');
-    }
+  }
 }
 addToShopList();
 const nocontet = 'no content';
-function createBookListMarkUp(arr) { 
-    return arr.map(({ _id, list_name, book_image, author, title, description, buy_links }) => {
+function createBookListMarkUp(arr) {
+  return arr
+    .map(
+      ({
+        _id,
+        list_name,
+        book_image,
+        author,
+        title,
+        description,
+        buy_links,
+      }) => {
         return `<li class="book-item" id="${_id}">
               <div class="book-data">
                 <div class="book-img"">
@@ -74,29 +85,28 @@ function createBookListMarkUp(arr) {
                 </svg>
               </button>
             </li>`;
-    })
+      }
+    )
     .join('');
 }
 ulList.addEventListener('click', deleteBtn);
 
-
 // Delete from LocalStorage and fron Shopping List
-function deleteBtn(event) { 
-    const data = getLocalData();
-    console.log(data);
-    const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
-    data.splice(idx, 1);
-    savedData(data);
-    if (data.length === 0) {
-        empty.classList.replace('is-hidden', 'not-is-hidden');
-        const markup = createBookListMarkUp(data);
-        ulList.innerHTML = markup;
-    }
-    else {
-        empty.classList.replace('not-is-hidden', 'is-hidden');
-        const markup = createBookListMarkUp(data);
-        ulList.innerHTML = markup;
-    }
+function deleteBtn(event) {
+  const data = getLocalData();
+  console.log(data);
+  const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
+  data.splice(idx, 1);
+  savedData(data);
+  if (data.length === 0) {
+    empty.classList.replace('is-hidden', 'not-is-hidden');
+    const markup = createBookListMarkUp(data);
+    ulList.innerHTML = markup;
+  } else {
+    empty.classList.replace('not-is-hidden', 'is-hidden');
+    const markup = createBookListMarkUp(data);
+    ulList.innerHTML = markup;
+  }
 }
 
 function getLocalData() {
@@ -108,7 +118,5 @@ function getLocalData() {
   }
 }
 function savedData(params) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
- 
-
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
 }

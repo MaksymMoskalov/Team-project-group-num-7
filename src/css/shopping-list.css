@@ -199,6 +199,12 @@
   height: 198px;
 }
 
+@media screen and (max-width: 320px) {
+  .empty {
+    left: 74%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .title-h1 {
     letter-spacing: -1.92px;
