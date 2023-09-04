@@ -25,7 +25,7 @@ async function onChooseCategory(e) {
 function createMarkupBookCard(arr) {
   const bookCardMarkup = arr
     .map(({ _id, book_image, title, author }) => {
-      return `<li class="book-js book-card-item" data-id="${_id}"><img class="book-card" src="${book_image}"  alt="${title} book image"><h3 class="book-card-header">${title}</h3><p class="book-card-text">${author}</p></li>`;
+      return `<li class="book-js book-card-item" data-id="${_id}"><div class="img-box"><img class="book-card" src="${book_image}"  alt="${title} book image"><div class="overlay"><p class="overlay-txt">quick view</p></div></div><h3 class="book-card-header">${title}</h3><p class="book-card-text">${author}</p></li>`;
     })
     .join('');
   return (bookCardListEl.innerHTML = bookCardMarkup);
