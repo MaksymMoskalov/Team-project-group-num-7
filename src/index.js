@@ -10,5 +10,4 @@ import './js/category-list.js';
 import './js/dark-theme.js';
 import './js/dark-theme.js';
 import './js/book-cards.js';
-import './js/pagination.js';
 

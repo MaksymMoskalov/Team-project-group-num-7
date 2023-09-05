@@ -6,9 +6,12 @@
 }
 
 .tui-pagination .tui-page-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  text-align: center;
   width: 44px;
+  height: 44px;
   padding-top: 11px;
   padding-bottom: 11px;
   border-radius: 50%;
@@ -26,6 +29,14 @@
   color: #fff;
 }
 
+.tui-ico-first {
+  content: url('../images/shop-imgs/tui-first.svg');
+}
+
+.tui-ico-prev {
+  content: url('../images/shop-imgs/tui-prev.svg');
+}
+
 .tui-first,
 .tui-prev {
   background: #111;
@@ -40,7 +51,11 @@
   margin-right: 8px;
 }
 
-.tui-page-btn:nth-child(n + 3):nth-child(-n + 6):not(.tui-next-is-ellip) {
+.tui-next-is-ellip {
+  margin-left: 10px;
+}
+
+.tui-prev-is-ellip {
   margin-right: 10px;
 }
 
@@ -52,6 +67,14 @@
 .tui-last {
   background: #eac645;
   border: 1px solid #111;
+}
+
+.tui-ico-next {
+  content: url('../images/shop-imgs/tui-next.svg');
+}
+
+.tui-ico-last {
+  content: url('../images/shop-imgs/tui-last.svg');
 }
 
 .tui-ico-next,

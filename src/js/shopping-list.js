@@ -2,6 +2,7 @@ import axios from 'axios';
 import amazon from '../images/link-png/amazon.png';
 import applebook from '../images/link-png/applebook.png';
 import bookshop from '../images/link-png/bookshop.png';
+import Pagination from 'tui-pagination';
 
 const empty = document.querySelector('.empty');
 empty.classList.add('not-is-hidden');
@@ -15,6 +16,7 @@ async function addToShopList() {
       empty.classList.replace('not-is-hidden', 'is-hidden');
       const markup = createBookListMarkUp(getArr);
       ulList.innerHTML = markup;
+      displayPage(1, getArr);
     } else {
       empty.classList.replace('is-hidden', 'not-is-hidden');
     }
@@ -123,3 +125,42 @@ function getLocalData() {
 function savedData(params) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
 }
+
+
+
+/**
+  |============================
+  | PAGINATION
+  |============================
+*/
+
+
+// Визначаємо змінні для налаштувань пагінації
+  const paginationContainer = document.getElementById('pagination');
+  const itemsPerPage = 3; // Кількість елементів на сторінці
+
+  // Функція для відображення певної сторінки з даними
+  function displayPage(pageNumber, data) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToShow = data.slice(startIndex, endIndex);
+    const markup = createBookListMarkUp(itemsToShow);
+    ulList.innerHTML = markup;
+  }
+
+  // Оновлюємо сторінку при зміні сторінки в пагінації
+  function handlePageChange(eventData) {
+    const currentPage = eventData.page;
+    displayPage(currentPage, getLocalData());
+  }
+
+  // Ініціалізуємо пагінацію
+  const pagination = new Pagination(paginationContainer, {
+    totalItems: getLocalData().length, // Загальна кількість елементів
+    itemsPerPage: itemsPerPage,        // Кількість елементів на сторінці
+    visiblePages: 1,                  // Кількість видимих сторінок у пагінації
+    centerAlign: true,                // Вирівнювання по центру
+  });
+
+  // Додаємо обробник події при зміні сторінки в пагінації
+  pagination.on('beforeMove', handlePageChange);
