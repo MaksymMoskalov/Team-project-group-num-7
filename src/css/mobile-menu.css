@@ -1,19 +1,27 @@
-
+.modal-backdrop {
+  display: none;
+  position: fixed;  
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8 18.03%, #fff 100%); 
+  z-index: 998;
+}
 .menu-container {
   position: fixed;
   /* top: 0; */
-  left: 0;  
+  left: 0;
   width: 100vw;
-  height: 100vh;  
-  background: radial-gradient(
-    189.32% 190.93% at 59.76% -23.42%,
-    #4f2ee8 18.03%,
-    #fff 100%
-  );
-  
+  height: 100vh;
+  background-image: url(../images/defaults/mobile-grup.png);
+  height: 50%;    
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain ;
+    position: relative;
   z-index: 999;
   transform: translateX(100%);
-  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;  
 }
 
 @media (min-width: 768px) {
@@ -22,33 +30,67 @@
   }
 }
 
+
 .menu-container.is-open {
   transform: translateX(0);
+  overflow: hidden;
 }
 
-.sign-up {
-  margin-top: 40px;
-  margin-left: 20px;
+.menu-img {
   display: flex;
-  padding: 15px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 126px;
+  padding-left: 20px;
+}
+
+.menu-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-link .home-link-back {
+  color: #111;
+font-family: DM Sans;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 18px; /* 128.571% */
+letter-spacing: -0.56px;
+text-transform: uppercase;
+padding: 8px 16px;
+}
+
+.menu-link .shpping-link-back {
   color: #fff;
+  font-family: DM Sans;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px; /* 128.571% */
   letter-spacing: -0.56px;
+  text-transform: uppercase;
+  margin-top: 17px;
+}
+.menu-link .shoper-svg{
+  fill: #FFFFFF;
+}
+
+.sign-up {
+  color: #111;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: -0.56px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  padding: 15px 24px;
   border-radius: 18px;
   border: 1.5px solid #111;
-  background: #4f2ee8;
 }
 
-.icon-sign-up {
-  margin-left: 90px;
-}
-
-
-.mobile-grup {
-  position: absolute;
-  bottom: 0;
-  left: 0; 
-  right: 0; 
-}
