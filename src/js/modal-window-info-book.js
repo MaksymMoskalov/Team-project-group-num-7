@@ -89,6 +89,7 @@ function addMarkup(markup, el) {
 const nocontent = 'no content';
 
 function createContent({ book_image, title, author, description, buy_links }) {
+
   const isDarkTheme = document.body.classList.contains('dark-theme');
 
   
