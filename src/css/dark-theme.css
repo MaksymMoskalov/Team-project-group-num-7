@@ -1,12 +1,8 @@
-/* body.light-theme {
-    background-color: #fff;
-    color: #333;
-} */
 
 body.dark-theme {
     background-color: 
     rgba(32, 32, 36, 1);
-    color: #fff;
+    color: var(--white);
 } 
 /****/
 body.dark-theme .header {
@@ -25,4 +21,45 @@ body.dark-theme .mobile-menu .svg-dark {
 
 body.light-theme .mobile-menu .svg-dark {
     stroke: #111;
+}
+body.dark-theme .category-item:is(:hover, :focus) {
+    color: #eac645;
+}
+
+body.dark-theme .category-item {
+    color: #B4AFAF
+}
+body.dark-theme .title-main {
+    color: var(--white);
+}
+body.dark-theme .see-more {
+    background-color: inherit;
+    color: var(--white);
+}
+body.dark-theme .title-h1 {
+    color: var(--white);
+}
+body.dark-theme .empty > p{
+    color: #B4AFAF
+}
+body.dark-theme .book-item {
+    background-color: var(--black)
+}
+body.dark-theme .book-name {
+    color: var(--white);
+}
+body.dark-theme .book-desc {
+    color: var(--white);
+}
+body.dark-theme  .modal {
+    background-color: #202024;
+}
+body.dark-theme  .list-btn {
+    color: var(--white);
+}
+body.dark-theme  .title {
+    color: var(--white);
+}
+body.dark-theme  .modal-icon {
+    stroke: rgba(243, 243, 243, 1);
 }
