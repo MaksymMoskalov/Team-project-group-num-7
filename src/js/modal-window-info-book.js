@@ -102,7 +102,7 @@ function createContent({ book_image, title, author, description, buy_links }) {
       <p class="author">${author}</p>
       <p class="description">${description || nocontent}</p>
       <ul class="list-links">
-        <li class="item-book"><a href="${buy_links[0].url}" target="_blank"><img class="" src="${amazonImageSrc}" alt="${buy_links[0].name}" /></a></li>
+        <li class="item-book"><a href="${buy_links[0].url}" target="_blank"><img class="img-amazzon-dark" src="${amazonImageSrc}" alt="${buy_links[0].name}" /></a></li>
         <li class="item-book"><a href="${buy_links[1].url}" target="_blank"><img class="" src="${applebook}" alt="${buy_links[1].name}" /></a></li>
         <li class="item-book"><a href="${buy_links[4].url}" target="_blank"><img class="" src="${bookshop}" alt="${buy_links[4].name}" /></a></li>
       </ul>
