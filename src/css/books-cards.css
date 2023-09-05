@@ -4,6 +4,11 @@
   margin-bottom: 14px;
   border-radius: 8px;
 }
+@media only screen and (max-width: 321px) {
+  .book-card {
+    width: 315px;
+  }
+}
 @media only screen and (min-width: 768px) {
   .book-card {
     width: 218px;
@@ -21,6 +26,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--black);
+
   font-size: 16px;
   font-weight: 700;
 
@@ -30,6 +36,7 @@
 
   margin-bottom: 4px;
 }
+
 .book-card-text {
   color: #b4afaf;
   font-size: 12px;
@@ -71,6 +78,11 @@
 .book-card-item:hover .overlay {
   transform: translateY(-20%);
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media only screen and (max-width: 321px) {
+  .book-card-item {
+    width: 315px;
+  }
 }
 @media only screen and (min-width: 768px) {
   .book-card-item {
