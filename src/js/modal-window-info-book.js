@@ -64,7 +64,7 @@ function createContent({ book_image, title, author, description, buy_links }) {
 <ul class = "list-links">
 <li class="item-book"><a href="${
     buy_links[0].url
-  }" target="_blank" ><img class = "" src="${amazon}" alt="${
+  }" target="_blank" ><img class = "img-amazzon-dark" src="${amazon}" alt="${
     buy_links[0].name
   }"   /></a></li>
 <li class="item-book"><a href="${
