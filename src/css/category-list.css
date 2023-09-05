@@ -1,48 +1,57 @@
-@media screen and (min-width: 768px) {
-    .category-box{
-        width: 100%;
-        max-height: 228px;
-    }
-    .category-list::-webkit-scrollbar{
-        max-height: 114px;
-    }
-    .category-list{
-        max-height: 228px;
-    }
+.category-box {
+  max-width: 337px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
-.category-box{
-    width: 337px;
-    /* height: 472px; */
-    margin-left: 24px;
-    margin-top: 40px;
+.category-item {
+  color: rgba(17, 17, 17, 0.6);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  padding-bottom: 32px;
 }
-.category-item{
-    color: rgba(17, 17, 17, 0.60);
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -0.36px;
-    padding-bottom: 32px;
-    
+.category-item:is(:hover, :focus) {
+  color: var(--violet);
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 700;
 }
-.category-item:is(:hover, :focus){
-    color: var(--violet);
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 700;
+.category-list {
+  max-height: 472px;
+  overflow-y: scroll;
+}
+.category-list::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+  border-radius: 12px;
+  height: 167px;
+}
+.category-list::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 12px;
+}
 
-}
-.category-list{
+@media screen and (min-width: 768px) {
+  .category-box {
+    width: 100%;
     max-height: 472px;
-    overflow-y: scroll;
+    margin: 0 0;
+    margin-right: 32px;
+  }
+  .category-list::-webkit-scrollbar {
+    max-height: 114px;
+  }
+  .category-list {
+    max-height: 472px;
+  }
 }
-.category-list::-webkit-scrollbar{
-    width: 8px;
-    background-color: transparent;
-    border-radius: 12px;
-    height: 167px;
-}
-.category-list::-webkit-scrollbar-thumb{
-    background:#E0E0E0;
-    border-radius: 12px;
+
+@media screen and (min-width: 1440px) {
+  .category-box {
+    margin: 0 0;
+    margin-bottom: 86px;
+  }
 }

@@ -36,6 +36,9 @@ let currentBook = '';
 let bookID = '';
 
 async function addcontent(e) {
+  if (e.target.nodeName === 'BUTTON') {
+    return;
+  }
   const id = e.target.closest('.book-js');
   bookID = id.dataset.id;
   openModal();
