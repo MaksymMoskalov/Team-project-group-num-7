@@ -2,6 +2,7 @@ import axios from 'axios';
 import amazon from '../images/link-png/amazon.png';
 import applebook from '../images/link-png/applebook.png';
 import bookshop from '../images/link-png/bookshop.png';
+import amazondark from '../images/link-png/amazondark.png';
 
 const empty = document.querySelector('.empty');
 empty.classList.add('not-is-hidden');
@@ -23,6 +24,7 @@ async function addToShopList() {
 addToShopList();
 const nocontet = 'no content';
 function createBookListMarkUp(arr) {
+  const isDarkTheme = document.body.classList.contains('dark-theme');
   return arr
     .map(
       ({
@@ -34,6 +36,8 @@ function createBookListMarkUp(arr) {
         description,
         buy_links,
       }) => {
+        const amazonImage = isDarkTheme ? amazondark : amazon;
+
         return `<li class="book-item" id="${_id}">
               <div class="book-data">
                 <div class="book-img"">
@@ -50,7 +54,7 @@ function createBookListMarkUp(arr) {
                       <li class="item-book">
                         <a href="${buy_links[0].url}" target="_blank" class="">
                           <img
-                            src="${amazon}"
+                            src="${amazonImage}"
                             alt="${buy_links[0].name}"
                           />
                         </a>

@@ -29,7 +29,7 @@
             </path>
         </symbol>
         <symbol id="icon-x-close" viewBox="0 0 32 32">
-            <path d="M21 7L7 21M7 7L21 21" stroke="#111111" stroke-width="3" stroke-linecap="round"
+            <path d="M21 7L7 21M7 7L21 21"  stroke-width="3" stroke-linecap="round"
                 stroke-linejoin="round"></path>
         </symbol>
         <symbol id="icon-trident" viewBox="0 0 20 32">
