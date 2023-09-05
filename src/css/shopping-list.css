@@ -4,6 +4,7 @@
 .shop-container {
   display: flex;
   gap: 40px;
+  justify-content: center;
 }
 .shop-block {
   position: relative;
@@ -42,16 +43,16 @@
 }
 .book-data {
   position: absolute;
-  top: 13px;
-  left: 13px;
+  top: 12px;
+  left: 12px;
   display: flex;
   gap: 14px;
 
   flex-shrink: 0;
 }
 .book-img {
-  max-width: 100px;
-  max-height: 142px;
+  width: 100px;
+  height: 142px;
   border-radius: 8px;
   background: lightgray 50% / cover no-repeat;
 }
@@ -99,7 +100,7 @@
 .book-desc {
   width: 193px;
   height: 56px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
   color: #111;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -120,6 +121,7 @@
   margin-right: 0;
 }
 .book-author {
+  width: 100px;
   color: #b4afaf;
   font-family: DM Sans;
   font-size: 12px;
@@ -128,6 +130,9 @@
   line-height: 14px; /* 116.667% */
   letter-spacing: -0.48px;
   margin-right: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .shop-links {
   display: flex;
@@ -221,8 +226,8 @@
     flex-shrink: 0;
   }
   .book-img {
-    max-width: 80px;
-    max-height: 110px;
+    width: 80px;
+    height: 110px;
     border-radius: 4px;
     background: lightgray 50% / cover no-repeat;
   }
@@ -241,28 +246,14 @@
   }
   .book-desc {
     width: 173px;
-    height: 50px;
-    color: #111;
-    -webkit-line-clamp: 3;
-    letter-spacing: -0.56px;
-    -webkit-box-orient: vertical;
-    margin-bottom: 14px;
-    font-family: DM Sans;
+    height: 44px;
+    margin-bottom: 20px;
     font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
     line-height: 14px;
-    display: -webkit-box;
-    overflow: hidden;
   }
   .book-author {
-    color: #b4afaf;
-    letter-spacing: -0.48px;
-    margin-right: auto;
-    font-family: DM Sans;
+    width: 90px;
     font-size: 8px;
-    font-style: italic;
-    font-weight: 400;
     line-height: 12px;
   }
   .shop-links {
@@ -316,8 +307,8 @@
     gap: 24px;
   }
   .book-img {
-    max-width: 116px;
-    max-height: 165px;
+    width: 116px;
+    height: 165px;
   }
   .book-name {
     width: 166px;
@@ -335,9 +326,11 @@
     height: 53px;
     margin-bottom: 38px;
   }
+  .book-author {
+    width: 300px;
+  }
   .author-shoplinks {
     width: 520px;
-    /* gap: 305px; */
   }
   .author-shoplinks > *:first-child {
     padding-top: 16px;
