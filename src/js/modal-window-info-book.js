@@ -11,7 +11,6 @@ const refs = {
   cardInfoBook: document.querySelector('.info-book-card'),
   congratulations: document.querySelector('.congratulations'),
   btnList: document.querySelector('.list-btn'),
-  btnListRemove: document.querySelector('.list-btn-remove'),
   bookElement: document.querySelector('.ul-global'),
 };
 console.log(refs.cardInfoBook);
@@ -22,7 +21,6 @@ console.log(refs.bookElement);
 refs.btnList.addEventListener('click', cheangeTextOfBtn);
 refs.modalBtnClose.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', clickOnBackdrop);
-
 refs.bookElement.addEventListener('click', addcontent);
 
 const BASE_URL = 'https://books-backend.p.goit.global/books/';
@@ -55,7 +53,7 @@ async function addcontent(e) {
 function addMarkup(markup, el) {
   el.innerHTML = markup;
 }
-const nocontet = 'no content';
+const nocontet = 'No description added';
 function createContent({ book_image, title, author, description, buy_links }) {
   const cardBook = `
 <img class = "image " src="${book_image}" alt="photo of the book"   />
@@ -84,13 +82,6 @@ function createContent({ book_image, title, author, description, buy_links }) {
   console.log(buy_links[0].url);
 
   return cardBook;
-}
-
-function getLink(name) {
-  if (name in linkShop) {
-    const image = linkShop[name];
-    return image;
-  } else return '';
 }
 
 function openModal() {
