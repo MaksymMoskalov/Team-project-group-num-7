@@ -146,7 +146,8 @@
   margin-top: 14px;
   height: 18px;
   overflow: hidden;
-  overflow-y: scroll;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .author-main {
@@ -159,7 +160,8 @@
 
   height: 14px;
   overflow: hidden;
-  overflow-y: scroll;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .see-more {
@@ -193,14 +195,24 @@
   }
 }
 
+.main-book-wraper {
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1439px) {
   .main-book-wraper {
-    width: 704px;
+    max-width: 704px;
+    margin: 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .main-book-wraper {
+    max-width: 996px;
+    margin-left: 0;
+    margin-right: 0;
     margin-top: 40px;
   }
 }
