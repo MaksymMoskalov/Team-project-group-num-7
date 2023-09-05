@@ -35,17 +35,9 @@ function workWithData({ data }) {
         const seeMore = document.createElement('button');
         seeMore.textContent = 'see more';
         seeMore.classList.add('see-more');
+        seeMore.setAttribute('data-category', list_name);
         liGlobal.appendChild(seeMore);
-        seeMore.addEventListener('click', () => {
-          const categoryBooks = categoryList.querySelectorAll('.book');
-          categoryBooks.forEach(book => {
-            book.style.display = 'block';
-          });
-          if ((categoryBooks.length = books.length)) {
-            seeMore.style.display = 'none';
-            Notiflix.Notify.info('Sorry, there are no more books');
-          }
-        });
+        ulGlobal.addEventListener('click', seeMoreBtn);
       }
     });
   } catch (error) {
@@ -56,7 +48,7 @@ function workWithData({ data }) {
 function createBookListMarkup({ books }) {
   const markup = books
     .map(({ list_name, book_image, title, author, _id }) => {
-      return `<li class="book" data-id="${_id}">
+      return `<li class="book book-js" data-id="${_id}">
       <div class='box'>
         <img src="${book_image}" alt="${list_name}" class="img-book"/>
       </div>
@@ -68,4 +60,46 @@ function createBookListMarkup({ books }) {
   return markup;
 }
 
+async function seeMoreBtn(e) {
+  if (e.target.nodeName !== 'BUTTON') {
+    return;
+  }
+
+  const categoryBtn = e.target.dataset.category;
+  const { data } = await axios.get(
+    `https://books-backend.p.goit.global/books/category?category=${categoryBtn}`
+  );
+  const newBooksMarkup = createBookMarkupData({ data });
+
+  const categoryContainer = e.target
+    .closest('.li-in-global')
+    .querySelector('.ul-category');
+
+  categoryContainer.innerHTML = newBooksMarkup;
+
+  const categoryBooks = categoryContainer.querySelectorAll('.book');
+  categoryBooks.forEach(book => {
+    book.style.display = 'block';
+  });
+
+  if (categoryBooks.length >= data.length) {
+    Notiflix.Notify.info('Sorry, there are no more books');
+  }
+  e.target.style.display = 'none';
+}
 export { createBookListMarkup, workWithData, axiosPosts };
+
+function createBookMarkupData({ data }) {
+  const markup = data
+    .map(({ list_name, book_image, title, author, _id }) => {
+      return `<li class="book book-js" data-id="${_id}">
+      <div class='box'>
+        <img src="${book_image}" alt="${list_name}" class="img-book"/>
+      </div>
+      <h3 class="title-main">${title}</h3>
+      <p class="author-main">${author}</p>
+    </li>`;
+    })
+    .join('');
+  return markup;
+}

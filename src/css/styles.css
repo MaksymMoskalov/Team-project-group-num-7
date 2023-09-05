@@ -2,6 +2,7 @@
 @import url('./roots.css');
 @import url('./main-books.css');
 @import url('./header.css');
+@import url('./shopping-list.css');
 @import url('./books-cards.css');
 @import url('./scroll-up.css');
 @import url('./modal-window-info-book.css');
@@ -9,3 +10,34 @@
 @import url('./mobile-menu.css');
 @import url('./category-list.css');
 @import url('./dark-theme.css');
+
+.container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1440px) {
+  .body .container {
+    display: flex;
+  }
+}
+
+.bloock-wraper {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .bloock-wraper {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .bloock-wraper {
+    flex-direction: column;
+    margin-right: 40px;
+  }
+}
