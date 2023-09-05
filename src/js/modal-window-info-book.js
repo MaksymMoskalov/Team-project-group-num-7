@@ -2,6 +2,7 @@ import axios from 'axios';
 import amazon from '../images/link-png/amazon.png';
 import applebook from '../images/link-png/applebook.png';
 import bookshop from '../images/link-png/bookshop.png';
+import amazondark from '../images/link-png/amazondark.png';
 
 const refs = {
   btn: document.querySelector('.load-more'),
@@ -55,37 +56,62 @@ async function addcontent(e) {
 function addMarkup(markup, el) {
   el.innerHTML = markup;
 }
-const nocontet = 'no content';
+// const nocontet = 'no content';
+// function createContent({ book_image, title, author, description, buy_links }) {
+//   const cardBook = `
+// <img class = "image " src="${book_image}" alt="photo of the book"   />
+// <div class = "info-book">
+// <h2 class = "title">${title}</h2>
+// <p class="author">${author}</p>
+// <p class="description">${description || nocontet}</p>
+// <ul class = "list-links">
+// <li class="item-book"><a href="${
+//     buy_links[0].url
+//   }" target="_blank" ><img class = "" src="${amazon}" alt="${
+//     buy_links[0].name
+//   }"   /></a></li>
+// <li class="item-book"><a href="${
+//     buy_links[1].url
+//   }" target="_blank" ><img class = "" src="${applebook}" alt="${
+//     buy_links[1].name
+//   }"   /></a></li>
+// <li class="item-book"><a href="${
+//     buy_links[4].url
+//   }" target="_blank" ><img class = "" src="${bookshop}" alt="${
+//     buy_links[4].name
+//   }"   /></a></li>
+// </ul>
+// </div>`;
+//   console.log(buy_links[0].url);
+
+//   return cardBook;
+// }
+const nocontent = 'no content';
+
 function createContent({ book_image, title, author, description, buy_links }) {
+  const amazonImage = './images/shop-imgs/amazon-dark.png';
+  const isDarkTheme = document.body.classList.contains('dark-theme');
+
+  
+  const amazonImageSrc = isDarkTheme ? amazondark : amazon;
+
   const cardBook = `
-<img class = "image " src="${book_image}" alt="photo of the book"   />
-<div class = "info-book">
-<h2 class = "title">${title}</h2>
-<p class="author">${author}</p>
-<p class="description">${description || nocontet}</p>
-<ul class = "list-links">
-<li class="item-book"><a href="${
-    buy_links[0].url
-  }" target="_blank" ><img class = "" src="${amazon}" alt="${
-    buy_links[0].name
-  }"   /></a></li>
-<li class="item-book"><a href="${
-    buy_links[1].url
-  }" target="_blank" ><img class = "" src="${applebook}" alt="${
-    buy_links[1].name
-  }"   /></a></li>
-<li class="item-book"><a href="${
-    buy_links[4].url
-  }" target="_blank" ><img class = "" src="${bookshop}" alt="${
-    buy_links[4].name
-  }"   /></a></li>
-</ul>
-</div>`;
+    <img class="image" src="${book_image}" alt="фото книги" />
+    <div class="info-book">
+      <h2 class="title">${title}</h2>
+      <p class="author">${author}</p>
+      <p class="description">${description || nocontent}</p>
+      <ul class="list-links">
+        <li class="item-book"><a href="${buy_links[0].url}" target="_blank"><img class="" src="${amazonImageSrc}" alt="${buy_links[0].name}" /></a></li>
+        <li class="item-book"><a href="${buy_links[1].url}" target="_blank"><img class="" src="${applebook}" alt="${buy_links[1].name}" /></a></li>
+        <li class="item-book"><a href="${buy_links[4].url}" target="_blank"><img class="" src="${bookshop}" alt="${buy_links[4].name}" /></a></li>
+      </ul>
+    </div>`;
+
   console.log(buy_links[0].url);
 
   return cardBook;
 }
-
 function getLink(name) {
   if (name in linkShop) {
     const image = linkShop[name];
