@@ -324,3 +324,7 @@
 .not-is-hidden {
   display: flex;
 }
+
+.shop .container {
+  display: flex;
+}

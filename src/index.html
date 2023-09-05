@@ -11,23 +11,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-    
   </head>
-  <body>
+  <body class="body">
     <include src="./partials/header.html"></include>
     <include src="./partials/mobile-menu.html"></include>
     <main>
-      <section>
-        <include src="./partials/book-list.html"></include>
-        <include src="./partials/category-list.html"></include>
-        <include src="./partials/suport.html"></include>
-        <include src="./partials/main-books-block.html"></include>
+      <section class="main-sectin">
+        <div class="container">
+          <div class="bloock-wraper">
+            <include src="./partials/category-list.html"></include>
+            <include src="./partials/suport.html"></include>
+          </div>
+          <include src="./partials/main-books-block.html"></include>
+        </div>
         <include src="./partials/scroll-up.html"></include>
         <include src="./partials/modal-window-info-book.html"></include>
-
       </section>
     </main>
-    
+
     <script type="module" src="./index.js"></script>
   </body>
 </html>
