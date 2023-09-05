@@ -37,6 +37,12 @@
   text-transform: uppercase;
 }
 
+@media screen and (min-width: 1440px) {
+  .nav {
+    margin-left: 76px;
+  }
+}
+
 .brand-logo {
   display: flex;
   align-items: center;
@@ -57,6 +63,7 @@
 
 .shopping-list-link .shpping-link-back:hover {
   background-color: var(--yellow);
+  font-weight: 700;
 }
 
 .shoper-svg {
@@ -84,6 +91,12 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .shopping-list-link {
+    margin-left: 24px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .home-link {
     display: block;
@@ -93,9 +106,16 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .home-link {
+    margin: 0;
+  }
+}
+
 .current-page {
   display: block;
   padding: 8px 16px;
+  font-weight: 700;
   border-radius: 36px;
   background: #eac645;
 }
