@@ -97,7 +97,12 @@ ulList.addEventListener('click', deleteBtn);
 
 // Delete from LocalStorage and fron Shopping List
 function deleteBtn(event) {
-  if (event.target.nodeName !== 'BUTTON') {
+  if (
+    event.target.nodeName !== 'BUTTON' &&
+    event.target.nodeName !== 'svg' &&
+    event.target.nodeName !== 'path' &&
+    '#text'
+  ) {
     return;
   }
   const data = getLocalData();
