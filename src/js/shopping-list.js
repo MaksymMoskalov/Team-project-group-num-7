@@ -4,7 +4,6 @@ import applebook from '../images/link-png/applebook.png';
 import bookshop from '../images/link-png/bookshop.png';
 import amazondark from '../images/link-png/amazondark.png';
 
-
 const empty = document.querySelector('.empty');
 empty.classList.add('not-is-hidden');
 const ulList = document.querySelector('.book-list');
@@ -27,8 +26,6 @@ const nocontet = 'no content';
 function createBookListMarkUp(arr) {
   const isDarkTheme = document.body.classList.contains('dark-theme');
 
-  
-  
   return arr
     .map(
       ({
@@ -104,7 +101,6 @@ function deleteBtn(event) {
     return;
   }
   const data = getLocalData();
-  console.log(data);
   const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
   data.splice(idx, 1);
   savedData(data);

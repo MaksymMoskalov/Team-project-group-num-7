@@ -1,0 +1,39 @@
+.shpping-link-back {
+  background-color: var(--yellow);
+}
+
+.current-page {
+  background-color: transparent;
+}
+
+.current-page:hover,
+.current-page:focus {
+  background-color: var(--yellow);
+}
+
+.mobile-nav {
+  width: 152px;
+}
+
+.mobile-shopping-list-link {
+  display: block;
+  border-radius: 36px;
+  padding: 8px 16px;
+
+  color: black;
+  font-weight: 700;
+  background-color: var(--yellow);
+}
+
+.mobile-current {
+  font-weight: 500;
+  color: white;
+  background-color: transparent;
+}
+.shpping-link-back {
+  background-color: transparent;
+}
+
+.mobile-shopping-list-link .shoper-svg {
+  fill: black;
+}
