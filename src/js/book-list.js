@@ -30,7 +30,7 @@ function workWithData({ data }) {
 
         categoryList.insertAdjacentHTML(
           'beforeend',
-          createBookListMarkup({ books })
+          createBookListMarkup(books)
         );
         const seeMore = document.createElement('button');
         seeMore.textContent = 'see more';
@@ -45,7 +45,7 @@ function workWithData({ data }) {
   }
 }
 
-function createBookListMarkup({ books }) {
+function createBookListMarkup(books) {
   const markup = books
     .map(({ list_name, book_image, title, author, _id }) => {
       return `<li class="book book-js" data-id="${_id}">
@@ -72,7 +72,7 @@ async function seeMoreBtn(e) {
   const { data } = await axios.get(
     `https://books-backend.p.goit.global/books/category?category=${categoryBtn}`
   );
-  const newBooksMarkup = createBookMarkupData({ data });
+  const newBooksMarkup = createBookListMarkup(data);
 
   const categoryContainer = e.target
     .closest('.li-in-global')
@@ -91,21 +91,3 @@ async function seeMoreBtn(e) {
   e.target.style.display = 'none';
 }
 export { createBookListMarkup, workWithData, axiosPosts };
-
-function createBookMarkupData({ data }) {
-  const markup = data
-    .map(({ list_name, book_image, title, author, _id }) => {
-      return `<li class="book book-js" data-id="${_id}">
-      <div class='box'>
-        <img src="${book_image}" alt="${list_name}" class="img-book"/>
-        <div class="overlay">
-      <p class="overlay-txt">quick view</p>
-      </div>
-      </div>
-      <h3 class="title-main">${title}</h3>
-      <p class="author-main">${author}</p>
-    </li>`;
-    })
-    .join('');
-  return markup;
-}
