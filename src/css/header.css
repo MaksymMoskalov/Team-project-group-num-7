@@ -9,6 +9,9 @@
     height: 72px;
     width: auto;
   }
+  .header .container {
+    max-width: 704px;
+  }
 }
 
 .header .container {
