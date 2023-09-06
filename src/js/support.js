@@ -62,10 +62,10 @@ function createMarkup(arr) {
       counter++;
       const paddedCounter = counter.toString().padStart(2, '0');
       return `<li class="list-item-fund">
-        <a href="${url}" target="_blank">
+        <a href="${url}" target="_blank" tabindex="-1">
         <div class="wrap-counter-img">
         <span class="counter">${paddedCounter}</span> 
-            <img src="${img}" alt="${title}" class="charity-logo">
+            <img src="${img}" alt="${title}" class="charity-logo" tabindex="0">
           </div>
           </a>
         </li>`;
