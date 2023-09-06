@@ -148,3 +148,9 @@
     margin-bottom: 12px;
   }
 }
+
+.icon-slide-clicked {
+  top: -3;
+  left: -3;
+  transform: rotate(180deg);
+}

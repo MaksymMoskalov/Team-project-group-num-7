@@ -14,7 +14,7 @@ function workWithData({ data }) {
   try {
     data.forEach(category => {
       const { list_name, books } = category;
-      if (books.length > 0) {
+      if (books.length) {
         const liGlobal = document.createElement('li');
         liGlobal.classList.add('li-in-global');
         ulGlobal.appendChild(liGlobal);
@@ -51,6 +51,9 @@ function createBookListMarkup({ books }) {
       return `<li class="book book-js" data-id="${_id}">
       <div class='box'>
         <img src="${book_image}" alt="${list_name}" class="img-book"/>
+        <div class="overlay">
+      <p class="overlay-txt">quick view</p>
+      </div>
       </div>
       <h3 class="title-main">${title}</h3>
       <p class="author-main">${author}</p>
@@ -95,6 +98,9 @@ function createBookMarkupData({ data }) {
       return `<li class="book book-js" data-id="${_id}">
       <div class='box'>
         <img src="${book_image}" alt="${list_name}" class="img-book"/>
+        <div class="overlay">
+      <p class="overlay-txt">quick view</p>
+      </div>
       </div>
       <h3 class="title-main">${title}</h3>
       <p class="author-main">${author}</p>

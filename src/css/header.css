@@ -1,9 +1,13 @@
-.header {
+@media screen and (max-width: 320px) {
+  .header {
+    width: 320px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .header {
     height: 72px;
+    width: auto;
   }
 }
 
@@ -61,7 +65,8 @@
   display: none;
 }
 
-.shopping-list-link .shpping-link-back:hover {
+.shopping-list-link .shpping-link-back:hover,
+.shopping-list-link .shpping-link-back:focus {
   background-color: var(--yellow);
   font-weight: 700;
 }

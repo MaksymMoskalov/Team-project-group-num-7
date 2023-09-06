@@ -1,0 +1,98 @@
+.tui-pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.tui-pagination .tui-page-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #111;
+  color: #111;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.22%;
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  background: #111;
+  color: #fff;
+}
+
+.tui-ico-first {
+  content: url('../images/shop-imgs/tui-first.svg');
+  padding-right: 7px;
+}
+
+.tui-ico-prev {
+  content: url('../images/shop-imgs/tui-prev.svg');
+}
+
+.tui-first,
+.tui-prev {
+  background: #111;
+}
+
+.tui-ico-first,
+.tui-ico-prev {
+  color: #b4afaf;
+}
+
+.tui-first {
+  margin-right: 8px;
+}
+
+.tui-next-is-ellip {
+  margin-left: 10px;
+}
+
+.tui-prev-is-ellip {
+  margin-right: 10px;
+}
+
+.tui-prev {
+  margin-right: 24px;
+}
+
+.tui-next,
+.tui-last {
+  background: #eac645;
+  border: 1px solid #111;
+}
+
+.tui-ico-next {
+  content: url('../images/shop-imgs/tui-next.svg');
+}
+
+.tui-ico-last {
+  content: url('../images/shop-imgs/tui-last.svg');
+  padding-right: 5px;
+}
+
+.tui-ico-next,
+.tui-ico-last {
+  color: #000000;
+}
+
+.tui-last {
+  margin-left: 8px;
+}
+
+.tui-next {
+  margin-left: 24px;
+}
+
+@media screen and (min-width: 767px) {
+.tui-pagination .tui-page-btn {
+  width: 44px;
+  height: 44px; 
+}
+}
+
