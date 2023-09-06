@@ -10,17 +10,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
-  padding-top: 11px;
-  padding-bottom: 11px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 1px solid #111;
   color: #111;
-
   font-size: 18px;
   font-weight: 700;
-  line-height: 22px;
+  line-height: 1.22%;
 }
 
 .tui-pagination .tui-is-selected,
@@ -31,6 +28,7 @@
 
 .tui-ico-first {
   content: url('../images/shop-imgs/tui-first.svg');
+  padding-right: 7px;
 }
 
 .tui-ico-prev {
@@ -75,6 +73,7 @@
 
 .tui-ico-last {
   content: url('../images/shop-imgs/tui-last.svg');
+  padding-right: 5px;
 }
 
 .tui-ico-next,
@@ -89,3 +88,11 @@
 .tui-next {
   margin-left: 24px;
 }
+
+@media screen and (min-width: 767px) {
+.tui-pagination .tui-page-btn {
+  width: 44px;
+  height: 44px; 
+}
+}
+
