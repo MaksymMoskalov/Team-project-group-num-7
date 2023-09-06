@@ -6,7 +6,7 @@ function createList(array) {
   return array
     .map(
       ({ list_name }) =>
-        `<li class="category-item" data-category="${list_name}">${list_name}</li>`
+        `<li class="category-item" data-category="${list_name}" tabindex="0">${list_name}</li>`
     )
     .join('');
 }
