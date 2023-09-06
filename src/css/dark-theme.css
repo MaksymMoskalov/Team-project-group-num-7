@@ -66,3 +66,6 @@ body.dark-theme  .modal-icon {
 body.dark-theme  .main-headline {
     color: var(--white);
 }
+body.dark-theme  .img-amazzon-dark {
+    filter: brightness(0) invert(1);
+}

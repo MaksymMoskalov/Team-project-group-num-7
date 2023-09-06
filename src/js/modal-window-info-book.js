@@ -13,10 +13,6 @@ const refs = {
   btnList: document.querySelector('.list-btn'),
   bookElement: document.querySelector('.ul-global'),
 };
-console.log(refs.cardInfoBook);
-console.log(refs.btnList);
-console.log(refs.backdrop);
-console.log(refs.bookElement);
 
 refs.btnList.addEventListener('click', cheangeTextOfBtn);
 refs.modalBtnClose.addEventListener('click', closeModal);
@@ -64,7 +60,7 @@ function createContent({ book_image, title, author, description, buy_links }) {
 <ul class = "list-links">
 <li class="item-book"><a href="${
     buy_links[0].url
-  }" target="_blank" ><img class = "" src="${amazon}" alt="${
+  }" target="_blank" ><img class = "img-amazzon-dark" src="${amazon}" alt="${
     buy_links[0].name
   }"   /></a></li>
 <li class="item-book"><a href="${
@@ -79,8 +75,6 @@ function createContent({ book_image, title, author, description, buy_links }) {
   }"   /></a></li>
 </ul>
 </div>`;
-  console.log(buy_links[0].url);
-
   return cardBook;
 }
 
@@ -109,7 +103,6 @@ function onEscKeyPress(event) {
 }
 
 function cheangeTextOfBtn(event) {
-  console.log(event.target);
   let flag = false;
   const action = event.target.dataset.action;
   if (action === 'add') {

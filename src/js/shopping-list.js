@@ -3,6 +3,7 @@ import amazon from '../images/link-png/amazon.png';
 import applebook from '../images/link-png/applebook.png';
 import bookshop from '../images/link-png/bookshop.png';
 import amazondark from '../images/link-png/amazondark.png';
+import Pagination from 'tui-pagination';
 
 const empty = document.querySelector('.empty');
 empty.classList.add('not-is-hidden');
@@ -16,6 +17,7 @@ async function addToShopList() {
       empty.classList.replace('not-is-hidden', 'is-hidden');
       const markup = createBookListMarkUp(getArr);
       ulList.innerHTML = markup;
+      displayPage(1, getArr);
     } else {
       empty.classList.replace('is-hidden', 'not-is-hidden');
     }
@@ -25,6 +27,7 @@ addToShopList();
 const nocontet = 'no content';
 function createBookListMarkUp(arr) {
   const isDarkTheme = document.body.classList.contains('dark-theme');
+
   return arr
     .map(
       ({
@@ -36,8 +39,7 @@ function createBookListMarkUp(arr) {
         description,
         buy_links,
       }) => {
-        const amazonImage = isDarkTheme ? amazondark : amazon;
-
+        const amazonImageSrc = isDarkTheme ? amazondark : amazon;
         return `<li class="book-item" id="${_id}">
               <div class="book-data">
                 <div class="book-img"">
@@ -53,8 +55,8 @@ function createBookListMarkUp(arr) {
                     <ul class="shop-links">
                       <li class="item-book">
                         <a href="${buy_links[0].url}" target="_blank" class="">
-                          <img
-                            src="${amazonImage}"
+                          <img class = "img-amazzon-dark"
+                            src="${amazonImageSrc}"
                             alt="${buy_links[0].name}"
                           />
                         </a>
@@ -97,12 +99,15 @@ ulList.addEventListener('click', deleteBtn);
 
 // Delete from LocalStorage and from Shopping List
 function deleteBtn(event) {
-  if (event.target.nodeName !== 'BUTTON' && event.target.nodeName !== 'svg' && event.target.nodeName !== 'path' && '#text') {
-    console.dir(event.target);
+  if (
+    event.target.nodeName !== 'BUTTON' &&
+    event.target.nodeName !== 'svg' &&
+    event.target.nodeName !== 'path' &&
+    '#text'
+  ) {
     return;
   }
   const data = getLocalData();
-  
   const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
   data.splice(idx, 1);
   savedData(data);
@@ -128,3 +133,42 @@ function getLocalData() {
 function savedData(params) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
 }
+
+
+
+/**
+  |============================
+  | PAGINATION
+  |============================
+*/
+
+
+// Визначаємо змінні для налаштувань пагінації
+  const paginationContainer = document.getElementById('pagination');
+  const itemsPerPage = 3; // Кількість елементів на сторінці
+
+  // Функція для відображення певної сторінки з даними
+  function displayPage(pageNumber, data) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToShow = data.slice(startIndex, endIndex);
+    const markup = createBookListMarkUp(itemsToShow);
+    ulList.innerHTML = markup;
+  }
+
+  // Оновлюємо сторінку при зміні сторінки в пагінації
+  function handlePageChange(eventData) {
+    const currentPage = eventData.page;
+    displayPage(currentPage, getLocalData());
+  }
+
+  // Ініціалізуємо пагінацію
+  const pagination = new Pagination(paginationContainer, {
+    totalItems: getLocalData().length, // Загальна кількість елементів
+    itemsPerPage: itemsPerPage,        // Кількість елементів на сторінці
+    visiblePages: 1,                  // Кількість видимих сторінок у пагінації
+    centerAlign: true,                // Вирівнювання по центру
+  });
+
+  // Додаємо обробник події при зміні сторінки в пагінації
+  pagination.on('beforeMove', handlePageChange);
