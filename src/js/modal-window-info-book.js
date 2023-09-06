@@ -21,9 +21,7 @@ refs.bookElement.addEventListener('click', addcontent);
 
 const BASE_URL = 'https://books-backend.p.goit.global/books/';
 async function getInfoByBooks(bookId) {
-  const getData = await axios.get(
-    `https://books-backend.p.goit.global/books/${bookId}`
-  );
+  const getData = await axios.get(`${BASE_URL}${bookId}`);
   return getData.data;
 }
 let currentBook = '';
