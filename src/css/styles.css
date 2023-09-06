@@ -39,6 +39,7 @@
 
 @media screen and (min-width: 1440px) {
   .bloock-wraper {
+    width: 356px;
     flex-direction: column;
     margin-right: 40px;
   }

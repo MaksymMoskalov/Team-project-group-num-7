@@ -69,3 +69,30 @@ body.dark-theme  .main-headline {
 body.dark-theme  .img-amazzon-dark {
     filter: brightness(0) invert(1);
 }
+body.dark-theme  .congratulations,
+body.dark-theme  .tui-ico-ellip{
+    color: var(--white);
+}
+body.dark-theme  .tui-is-selected{
+background-color: inherit;
+border-color: var(--white);
+}
+body.dark-theme  .tui-is-selected:hover,
+ body.dark-theme  .tui-is-selected:focus{
+    background-color: var(--white);
+    color: var(--black)
+}
+body.dark-theme .tui-next-is-ellip,
+body.dark-theme .tui-prev-is-ellip{
+    border-color: var(--white);
+}
+.category-item:hover, .category-item:focus {
+    color: #eac645;
+    outline: none;
+}
+.charity-logo:hover, .charity-logo:focus {
+    outline: none;
+}
+.list-item-fund > a {
+    outline: none;
+} 
