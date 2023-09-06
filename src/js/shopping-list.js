@@ -10,6 +10,19 @@ empty.classList.add('not-is-hidden');
 const ulList = document.querySelector('.book-list');
 const STORAGE_KEY = 'book-to-buy';
 
+
+// Визначаємо змінні для налаштувань пагінації
+  const paginationContainer = document.getElementById('pagination');
+  const itemsPerPage = 3; // Кількість елементів на сторінці
+
+   // Ініціалізуємо пагінацію
+  const pagination = new Pagination(paginationContainer, {
+    totalItems: getLocalData().length, // Загальна кількість елементів
+    itemsPerPage: itemsPerPage,        // Кількість елементів на сторінці
+    visiblePages: 1,                  // Кількість видимих сторінок у пагінації
+    centerAlign: true,                // Вирівнювання по центру
+  });
+
 async function addToShopList() {
   const getArr = await JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (getArr) {
@@ -107,10 +120,17 @@ function deleteBtn(event) {
   ) {
     return;
   }
+
+const currentPage = pagination.getCurrentPage();
+
   const data = getLocalData();
   const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
   data.splice(idx, 1);
   savedData(data);
+
+  pagination.reset(data.length);
+
+
   if (data.length === 0) {
     empty.classList.replace('is-hidden', 'not-is-hidden');
     const markup = createBookListMarkUp(data);
@@ -120,6 +140,18 @@ function deleteBtn(event) {
     const markup = createBookListMarkUp(data);
     ulList.innerHTML = markup;
   }
+  
+    // Перевіряємо, чи поточна сторінка є більше загальної кількості сторінок після видалення всіх елементів
+  if (currentPage > pagination.totalPages) {
+    // Якщо так, то перемістимось на останню сторінку
+    pagination.movePageTo(pagination.totalPages);
+  } else {
+    // В іншому випадку залишимось на поточній сторінці
+    pagination.movePageTo(currentPage);
+  }
+
+  // Викликаємо функцію відображення з поточною сторінкою і оновленими даними
+  displayPage(pagination.getCurrentPage(), data);
 }
 
 function getLocalData() {
@@ -143,10 +175,6 @@ function savedData(params) {
 */
 
 
-// Визначаємо змінні для налаштувань пагінації
-  const paginationContainer = document.getElementById('pagination');
-  const itemsPerPage = 3; // Кількість елементів на сторінці
-
   // Функція для відображення певної сторінки з даними
   function displayPage(pageNumber, data) {
     const startIndex = (pageNumber - 1) * itemsPerPage;
@@ -162,13 +190,6 @@ function savedData(params) {
     displayPage(currentPage, getLocalData());
   }
 
-  // Ініціалізуємо пагінацію
-  const pagination = new Pagination(paginationContainer, {
-    totalItems: getLocalData().length, // Загальна кількість елементів
-    itemsPerPage: itemsPerPage,        // Кількість елементів на сторінці
-    visiblePages: 1,                  // Кількість видимих сторінок у пагінації
-    centerAlign: true,                // Вирівнювання по центру
-  });
 
   // Додаємо обробник події при зміні сторінки в пагінації
   pagination.on('beforeMove', handlePageChange);
