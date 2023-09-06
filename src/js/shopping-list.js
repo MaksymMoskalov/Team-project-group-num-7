@@ -118,10 +118,10 @@ function deleteBtn(event) {
     const markup = createBookListMarkUp(data);
     ulList.innerHTML = markup;
   } else {
-    
     empty.classList.replace('not-is-hidden', 'is-hidden');
     const markup = createBookListMarkUp(data);
     ulList.innerHTML = markup;
+    displayPage(1, data);
   }
 }
 
