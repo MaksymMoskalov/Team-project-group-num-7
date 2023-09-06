@@ -14,7 +14,7 @@ function workWithData({ data }) {
   try {
     data.forEach(category => {
       const { list_name, books } = category;
-      if (books.length > 0) {
+      if (books.length) {
         const liGlobal = document.createElement('li');
         liGlobal.classList.add('li-in-global');
         ulGlobal.appendChild(liGlobal);

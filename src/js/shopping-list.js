@@ -5,7 +5,6 @@ import bookshop from '../images/link-png/bookshop.png';
 import amazondark from '../images/link-png/amazondark.png';
 import Pagination from 'tui-pagination';
 
-
 const empty = document.querySelector('.empty');
 empty.classList.add('not-is-hidden');
 const ulList = document.querySelector('.book-list');
@@ -29,8 +28,6 @@ const nocontet = 'no content';
 function createBookListMarkUp(arr) {
   const isDarkTheme = document.body.classList.contains('dark-theme');
 
-  
-  
   return arr
     .map(
       ({
@@ -102,11 +99,15 @@ ulList.addEventListener('click', deleteBtn);
 
 // Delete from LocalStorage and fron Shopping List
 function deleteBtn(event) {
-  if (event.target.nodeName !== 'BUTTON') {
+  if (
+    event.target.nodeName !== 'BUTTON' &&
+    event.target.nodeName !== 'svg' &&
+    event.target.nodeName !== 'path' &&
+    '#text'
+  ) {
     return;
   }
   const data = getLocalData();
-  console.log(data);
   const idx = data.findIndex(({ _id }) => _id === event.target.dataset.id);
   data.splice(idx, 1);
   savedData(data);
