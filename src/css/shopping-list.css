@@ -1,5 +1,6 @@
 .shop {
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 .shop-container {
   display: flex;
@@ -29,6 +30,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 335px;
 }
 .book-item {
   position: relative;
@@ -181,7 +183,7 @@
 .empty {
   position: absolute;
   top: 400%;
-  left: 90%;
+  left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -210,6 +212,9 @@
     display: flex;
     gap: 40px;
     justify-content: center;
+  }
+  .book-list {
+    width: 280px;
   }
   .book-item {
     width: 276px;
@@ -287,7 +292,7 @@
     height: 12px;
   }
   .empty {
-    left: 74%;
+    left: 50%;
   }
 }
 
@@ -296,6 +301,9 @@
     letter-spacing: -1.92px;
     font-size: 48px;
     line-height: 52px;
+  }
+  .book-list {
+    width: 704px;
   }
   .book-item {
     width: 700px;
@@ -364,8 +372,8 @@
     height: 18px;
   }
   .empty {
-    top: 400%;
-    left: 125%;
+    top: 350%;
+    left: 50%;
   }
   .empty p {
     width: 349px;
@@ -381,6 +389,9 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .book-list {
+    width: 996px;
+  }
   .book-item {
     width: 992px;
     height: 209px;
@@ -402,7 +413,7 @@
   }
   .empty {
     top: 75%;
-    left: 150%;
+    left: 50%;
   }
 }
 .is-hidden {

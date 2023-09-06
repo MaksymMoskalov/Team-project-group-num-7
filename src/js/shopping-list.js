@@ -20,6 +20,7 @@ async function addToShopList() {
       displayPage(1, getArr);
     } else {
       empty.classList.replace('is-hidden', 'not-is-hidden');
+      paginationContainer.style.display = 'none';
     }
   }
 }
@@ -113,9 +114,11 @@ function deleteBtn(event) {
   savedData(data);
   if (data.length === 0) {
     empty.classList.replace('is-hidden', 'not-is-hidden');
+    paginationContainer.style.display = 'none';
     const markup = createBookListMarkUp(data);
     ulList.innerHTML = markup;
   } else {
+    
     empty.classList.replace('not-is-hidden', 'is-hidden');
     const markup = createBookListMarkUp(data);
     ulList.innerHTML = markup;
