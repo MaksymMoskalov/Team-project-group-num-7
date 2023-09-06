@@ -52,6 +52,7 @@
 
 @media screen and (min-width: 1440px) {
   .category-box {
+    max-width: 356px;
     margin: 0 0;
     margin-bottom: 86px;
   }
