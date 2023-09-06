@@ -10,6 +10,17 @@ categoryListEl.addEventListener('click', onChooseCategory);
 async function onChooseCategory(e) {
   const category = e.target.dataset.category;
   headerEl.innerHTML = `${category}`;
+  const words = headerEl.innerText.split(' ');
+  const lastWord = words[words.length - 1];
+
+  headerEl.innerHTML = words
+    .map((word, index) => {
+      if (index === words.length - 1) {
+        return `<span class="headline-books">${lastWord}</span>`;
+      }
+      return word;
+    })
+    .join(' ');
   if (category === 'All categories') {
     bookCardListEl.innerHTML = '';
     headerEl.innerHTML = `Best Sellers <span class="headline-books">Books</span>`;
