@@ -262,3 +262,8 @@ body.show-modal .backdrop {
     width: 324px;
   }
 }
+@media only screen and (max-width: 350px) {
+  .modal {
+    width: calc(100% - 30px);
+  }
+}
