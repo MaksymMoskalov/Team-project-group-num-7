@@ -109,8 +109,7 @@
 .img-book {
   margin: 0;
   width: 100%;
-  min-height: 485px;
-  max-height: 485px;
+  height: 485px;
 }
 
 @media screen and (min-width: 768px) {
@@ -122,15 +121,13 @@
 
 @media screen and (min-width: 768px) {
   .img-book {
-    min-height: 316px;
-    max-height: 316px;
+    height: 316px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .img-book {
-    min-height: 256px;
-    max-height: 256px;
+    height: 256px;
   }
 }
 
