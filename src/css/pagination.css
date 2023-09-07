@@ -96,6 +96,10 @@
   margin-left: 24px;
 }
 
+.hidden-pagination {
+  display: none;
+}
+
 @media screen and (min-width: 767px) {
   .tui-pagination .tui-page-btn {
     width: 44px;
