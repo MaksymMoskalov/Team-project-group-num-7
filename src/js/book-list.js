@@ -50,7 +50,7 @@ function createBookListMarkup(books) {
     .map(({ list_name, book_image, title, author, _id }) => {
       return `<li class="book book-js" data-id="${_id}">
       <div class='box'>
-        <img src="${book_image}" alt="${list_name}" class="img-book"/>
+        <img src="${book_image}" loading="lazy" alt="${list_name}" class="img-book"/>
         <div class="overlay">
       <p class="overlay-txt">quick view</p>
       </div>
